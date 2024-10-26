@@ -15,12 +15,13 @@ import java.io.IOException;
  * @author Federico
  */
 public class Exportar {
-    public void exportar(Videoclub vc){
-        try{
-        XMLEncoder x = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("videoclub.xml")));
-        x.writeObject(vc);
-        x.close();
-        }catch(IOException e){
+
+    public void exportar(Videoclub vc) {
+        try {
+            XMLEncoder x = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("videoclub.xml")));
+            x.writeObject(vc);
+            x.close();
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
