@@ -15,14 +15,16 @@ public class MainController {
     
     Scanner consola ;
     Menu menu;
+    ApplicationController ac;
+    
     
     public MainController(){
         consola = new Scanner(System.in);
         menu = new Menu();
+        ac = new ApplicationController();
         
         while(mainMenuController()){
-        
-        
+            continue;
         }
         
     }
@@ -349,6 +351,7 @@ public class MainController {
         switch (opcion) {
             case "1":{
                 //Nueva pelicula
+                ac.newPelicula();
                 break;
             }   
             case "2":{

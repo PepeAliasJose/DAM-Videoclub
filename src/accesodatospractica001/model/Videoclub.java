@@ -16,7 +16,10 @@ public class Videoclub implements Serializable{
     ArrayList<Serie> series;
     ArrayList<Pelicula> peliculas;
     
-    public Videoclub(){}
+    public Videoclub(){
+        series = new ArrayList<Serie>();
+        peliculas = new ArrayList<Pelicula>();
+    }
 
     public Videoclub(ArrayList<Serie> series, ArrayList<Pelicula> peliculas) {
         this.series = series;

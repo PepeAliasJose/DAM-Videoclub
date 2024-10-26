@@ -4,10 +4,40 @@
  */
 package accesodatospractica001.controller;
 
+import accesodatospractica001.model.*;
+import java.util.Scanner;
 /**
  *
  * @author pepe
  */
 public class PeliculaController {
+    
+    public PeliculaController(){}
+    
+    
+    public Pelicula createPelicula(){
+        //Aqui se lanzan las excepciones
+        
+        
+        Scanner sc = new Scanner(System.in);
+        Pelicula p = new Pelicula();
+        
+        System.out.println("Escribe el titulo:");
+        p.setTitle(sc.nextLine());
+        
+        System.out.println("Escribe el año:");
+        p.setYear(sc.nextLine());
+        
+        System.out.println("Escribe la sinopsis:");
+        p.setSynopsis(sc.nextLine());
+        
+        System.out.println("Escribe la duracion:");
+        p.setDuration(sc.nextLine());
+        
+        System.out.println("Escribe el director:");
+        p.setDirector(sc.nextLine());
+        
+        return p;
+    }
     
 }
