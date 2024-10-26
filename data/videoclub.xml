@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="23" class="java.beans.XMLDecoder">
+<java version="21.0.4" class="java.beans.XMLDecoder">
  <object class="accesodatospractica001.model.Videoclub" id="Videoclub0">
   <void property="peliculas">
    <void method="add">
@@ -166,6 +166,52 @@
          </void>
          <void property="year">
           <string>2013</string>
+         </void>
+        </object>
+       </void>
+       <void method="add">
+        <object class="accesodatospractica001.model.Temporada">
+         <void property="capitulos">
+          <object class="java.util.ArrayList">
+           <void method="add">
+            <object class="accesodatospractica001.model.Capitulo">
+             <void property="duration">
+              <string>70</string>
+             </void>
+             <void property="sinopsis">
+              <string>Jessi, me desescoñe jessi</string>
+             </void>
+             <void property="title">
+              <string>La descoñadura</string>
+             </void>
+            </object>
+           </void>
+           <void method="add">
+            <object class="accesodatospractica001.model.Capitulo">
+             <void property="duration">
+              <string>90</string>
+             </void>
+             <void property="sinopsis">
+              <string>viajan a qatar</string>
+             </void>
+             <void property="title">
+              <string>Viaje a qatar</string>
+             </void>
+            </object>
+           </void>
+          </object>
+         </void>
+         <void property="seasonNumber">
+          <string>3</string>
+         </void>
+         <void property="sinopsis">
+          <string>Walter wite se descoña y vuelve</string>
+         </void>
+         <void property="title">
+          <string>EL descoñado</string>
+         </void>
+         <void property="year">
+          <string>2024</string>
          </void>
         </object>
        </void>

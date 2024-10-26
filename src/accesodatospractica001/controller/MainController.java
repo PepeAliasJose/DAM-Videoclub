@@ -194,12 +194,12 @@ public class MainController {
                 } 
                 case "3":{
                     //Nueva temporada
-                    //ac.newTemporada()
+                    ac.newTemporada(serieModificar);
                     break;
                 } 
                 case "4":{
                     //Borrar temporada
-                    //ac.deleteTemporada()
+                    ac.deleteTemporada(serieModificar);
                     break;
                 } 
                 case "5":{

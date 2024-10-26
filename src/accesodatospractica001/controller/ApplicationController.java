@@ -202,7 +202,7 @@ public class ApplicationController {
 
     /**
     * 
-    * Busca una serie por su titulo
+    * Modifica una serie
     * 
     * @param s serie a modificar
     * @param campo opcion a modificar de la serie
@@ -228,14 +228,81 @@ public class ApplicationController {
     
     /**
     * 
-    * Busca una serie por su titulo
+    * Lista las temporadas de una serie
     * 
     * @param s serie la cual se van a mostrar sus temporadas
     * 
     * 
     */
     public void listTemporadas(Serie s){
+        System.out.println("*** TEMPORADAS ***");
+        for (Temporada t : s.getTemporadas()) {
+            System.out.println(t);
+            System.out.println("");
+        }
         
+    }
+    
+    /**
+    * 
+    * Agrega una nueva temporada a una serie
+    * 
+    * @param s serie la cual se va a agregar una temporada
+    * 
+    * 
+    */
+    public void newTemporada(Serie s){
+    
+        ArrayList<Temporada> listaTemporada = s.getTemporadas();
         
+        Temporada newTemporada = sc.createTemporada();
+        
+        for(Temporada t: listaTemporada){
+            
+            if(t.getSeasonNumber().equals(newTemporada.getSeasonNumber())){
+            
+                //Lanzar excepcion
+                
+            }
+        
+        }
+        
+        listaTemporada.add(newTemporada);
+        s.setTemporadas(listaTemporada);
+        
+        new Exportar().escribirXML(videoclub);
+    
+    }
+    
+    /**
+    * 
+    * Borra una temporada de una serie
+    * 
+    * @param s serie la cual se va a borrar la temporada
+    * 
+    * 
+    */
+    public void deleteTemporada(Serie s){
+        
+        System.out.println("Escribe el numero de temporada a borrar");
+        String numero = new Scanner(System.in).nextLine();
+        
+        ArrayList<Temporada> listaTemporada = s.getTemporadas();
+
+        
+        for(int x = 0; x<listaTemporada.size();x++){
+            
+            if(listaTemporada.get(x).getSeasonNumber().equals(numero)){
+            
+                listaTemporada.remove(listaTemporada.get(x));
+                
+            }
+        
+        }
+        
+        s.setTemporadas(listaTemporada);
+        
+        new Exportar().escribirXML(videoclub);
+
     }
 }
