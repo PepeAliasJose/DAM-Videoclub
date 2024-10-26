@@ -78,6 +78,25 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="accesodatospractica001.model.Pelicula">
+     <void property="director">
+      <string>Yo el antonio</string>
+     </void>
+     <void property="duration">
+      <string>200</string>
+     </void>
+     <void property="synopsis">
+      <string>El awiwi asesino</string>
+     </void>
+     <void property="title">
+      <string>EL AWIWI</string>
+     </void>
+     <void property="year">
+      <string>2000</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="series">
    <void method="add">

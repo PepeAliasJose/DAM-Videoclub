@@ -6,6 +6,11 @@ package accesodatospractica001.controller;
 
 import accesodatospractica001.dao.*;
 import accesodatospractica001.model.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -237,5 +242,41 @@ public class ApplicationController {
     public void listTemporadas(Serie s){
         
         
+    }
+    public void exportarPeliculasCSV(){
+        ArrayList<Pelicula> listaPeliculas = videoclub.getPeliculas();
+        
+        File f= new File("csvIO/peliculas.csv");
+        try{
+        BufferedWriter bw= new BufferedWriter(new FileWriter(f));
+        for(int i=0;i<listaPeliculas.size();i++){
+            
+            bw.write(listaPeliculas.get(i).getTitle()+","+listaPeliculas.get(i).getYear()+","+listaPeliculas.get(i).getSynopsis()+","+listaPeliculas.get(i).getDuration()+","+
+                    listaPeliculas.get(i).getDirector());
+            bw.newLine();
+        }
+        bw.flush();
+        bw.close();
+        }catch(IOException e){
+            System.err.println(e.getMessage());
+        }
+    }
+    public void importarPeliculasCSV(){
+        ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
+        
+        File f= new File("csvIO/peliculas.csv");
+        try{
+        BufferedReader br= new BufferedReader(new FileReader(f));
+        String linea="";
+        while((linea=br.readLine())!=null){
+            String[]cachos=linea.split(",");
+            listaPeliculas.add(new Pelicula(cachos[0],cachos[1],cachos[2],cachos[3],cachos[4]));
+        }
+        videoclub.setPeliculas(listaPeliculas);
+        //Actualizar xml
+        new Exportar().escribirXML(videoclub);
+        }catch(IOException e){
+            System.err.println(e.getMessage());
+        }
     }
 }
