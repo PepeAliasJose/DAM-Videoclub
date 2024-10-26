@@ -5,6 +5,7 @@
 package accesodatospractica001.controller;
 
 import accesodatospractica001.model.*;
+import java.util.ArrayList;
 import java.util.Scanner;
         
 /**
@@ -42,7 +43,29 @@ public class SerieController {
         serie.setDirector(sc.nextLine());
         
         System.out.println("Esta en emision? (s/n)");
+        String emision = sc.nextLine();
+        if(emision.equals("s")){
+            serie.setEmision(true);
+        }else if (emision.equals("n")){
+            serie.setEmision(false);
+        }else{
+            //Lanzar excepcion
+        }
       
+        ArrayList<Temporada> listTemporadas = new ArrayList<Temporada>();
+        System.out.println("Agregar temporadas? (s/n)");
+        boolean agregaTemp = (sc.nextLine().equalsIgnoreCase("s"))?true:false;
+        
+        //Bucle para agregar temporadas a la serie indefinidamente
+        while(agregaTemp){
+        
+            listTemporadas.add(createTemporada());
+            System.out.println("Agregar otra temporada? (s/n)");
+            agregaTemp = (sc.nextLine().equalsIgnoreCase("s"))?true:false;
+            
+        }
+        serie.setTemporadas(listTemporadas);
+        
         return serie;
     
     }
@@ -61,9 +84,33 @@ public class SerieController {
     public Temporada createTemporada(){
     
         Temporada tmp = new Temporada();
+        Scanner sc = new Scanner(System.in);
         
+        System.out.println("Introduce numero de temporada:");
+        tmp.setSeasonNumber(sc.nextLine());
         
+        System.out.println("Introduce titulo de temporada:");
+        tmp.setTitle(sc.nextLine());
         
+        System.out.println("Introduce la sinopsis:");
+        tmp.setSinopsis(sc.nextLine());
+        
+        System.out.println("Introduce el año de emision:");
+        tmp.setYear(sc.nextLine());
+        
+        ArrayList<Capitulo> listCapitulos = new ArrayList<Capitulo>();
+        System.out.println("Agregar capitulos? (s/n)");
+        boolean agregaCap = (sc.nextLine().equalsIgnoreCase("s"))?true:false;
+        
+        //Bucle para agregar temporadas a la serie indefinidamente
+        while(agregaCap){
+        
+            listCapitulos.add(createCapitulo());
+            System.out.println("Agregar otro capitulo? (s/n)");
+            agregaCap = (sc.nextLine().equalsIgnoreCase("s"))?true:false;
+            
+        }
+        tmp.setCapitulos(listCapitulos);
         
         return tmp;
     
@@ -83,8 +130,16 @@ public class SerieController {
     public Capitulo createCapitulo(){
     
         Capitulo cap = new Capitulo();
+        Scanner sc = new Scanner(System.in);
         
+        System.out.println("Introduce titulo del capitulo:");
+        cap.setTitle(sc.nextLine());
         
+        System.out.println("Introduce la sinopsis:");
+        cap.setSinopsis(sc.nextLine());
+        
+        System.out.println("Introduce la duracion en minutos:");
+        cap.setDuration(sc.nextLine());
         
         
         return cap;

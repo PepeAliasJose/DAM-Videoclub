@@ -44,19 +44,7 @@ public class ApplicationController {
             System.out.println(s);
             System.out.println("");
         }
-//        ArrayList<Temporada> prueba = new ArrayList<Temporada>();
-//        
-//        prueba.add(new Temporada());
-//        prueba.add(new Temporada());
-//        prueba.add(new Temporada());
-//        
-//        System.out.println(new Serie("Breaking bad", 
-//                "Jessi donde esta la merca jessi",
-//                "el director", true, prueba));
-//        System.out.println("");
-//        System.out.println(new Serie("Breaking bad", 
-//                "Jessi donde esta la merca jessi",
-//                " el director", false, prueba));
+
     }
 
     public void listAll() {
@@ -138,4 +126,59 @@ public class ApplicationController {
         listaPeliculas.remove(p);
         listaPeliculas.add(pNueva);
     }
+    
+    /**
+    * 
+    * Borra la serie especificada del videoclub y actualiza el XML
+    * 
+    */
+    public void deleteSerie(){
+        //Aqui se recogen las excepciones
+        System.out.println("Escribe el titulo de la serie a borrar");
+        Serie s = seachSerieByTitle(new java.util.Scanner(System.in).nextLine());
+        
+        if(s!=null){
+            System.out.printf("Seguro que quieres borrar %s?(s/n)%n",s.getTitle());
+            if(new java.util.Scanner(System.in).nextLine().equalsIgnoreCase("S")){
+
+                //Agregar la serie a la lista de series
+                ArrayList<Serie> series = videoclub.getSeries();
+                series.remove(s);
+                videoclub.setSeries(series);
+
+                //Actualizar xml
+                new Exportar().escribirXML(videoclub);
+
+            }else{
+                System.out.println("Cancelando borrado ... ");
+            }
+        }else{
+            System.err.println("SERIE NO ENCONTRADA");
+        }
+        
+    }
+    
+    /**
+    * 
+    * Busca una serie por su titulo
+    * 
+    * @param title Titulo de la serie a buscar
+    * 
+    * @return Objeto serie buscado por titulo; null si no se encuentra la serie
+    * 
+    *  
+    */
+    public Serie seachSerieByTitle(String title){
+        
+        for(Serie s: videoclub.getSeries()){
+            
+            if(s.getTitle().equalsIgnoreCase(title)){
+                return s;
+            }
+        
+        }
+        
+        return null;
+    }
+
 }

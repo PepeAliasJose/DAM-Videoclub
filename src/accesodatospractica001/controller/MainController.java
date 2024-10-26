@@ -7,8 +7,6 @@ package accesodatospractica001.controller;
 import accesodatospractica001.view.Menu;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import accesodatospractica001.model.*;
 import accesodatospractica001.controller.*;
 /**
@@ -146,6 +144,7 @@ public class MainController {
         switch (opcion) {
             case "1":{
                 //Nueva serie
+                ac.newSerie();
                 break;
             }   
             case "2":{
@@ -155,6 +154,7 @@ public class MainController {
             } 
             case "3":{
                 //Borrar serie
+                ac.deleteSerie();
                 break;
             } 
             case "4":{
