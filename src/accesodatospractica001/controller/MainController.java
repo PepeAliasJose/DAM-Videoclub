@@ -370,6 +370,7 @@ public class MainController {
             } 
             case "3":{
                 //Borrar pelicula
+                ac.deletePelicula();
                 break;
             } 
             case "4":{

@@ -133,14 +133,14 @@ public class ApplicationController {
     public void deletePelicula(){
         ArrayList<Pelicula> listaPeliculas = videoclub.getPeliculas();
         
-        System.out.println("Dime el titulo de la peli que quieres borrar");
+        
         
         Pelicula p= getPeliculaPorTitulo();
         if(p!=null){
         listaPeliculas.remove(p);
         videoclub.setPeliculas(listaPeliculas);
         //Actualizar xml
-        videoclub.setPeliculas(listaPeliculas);
+        new Exportar().escribirXML(videoclub);
         }else{
             System.err.println("NO SE HA PODIDO BORRAR LA PELICULA");
         }

@@ -78,25 +78,6 @@
      </void>
     </object>
    </void>
-   <void method="add">
-    <object class="accesodatospractica001.model.Pelicula">
-     <void property="director">
-      <string>Pipi lastru</string>
-     </void>
-     <void property="duration">
-      <string>45</string>
-     </void>
-     <void property="synopsis">
-      <string>yo que se ermano</string>
-     </void>
-     <void property="title">
-      <string>El golpe</string>
-     </void>
-     <void property="year">
-      <string>1973</string>
-     </void>
-    </object>
-   </void>
   </void>
   <void property="series">
    <void method="add">
