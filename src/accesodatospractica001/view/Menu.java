@@ -9,6 +9,9 @@ package accesodatospractica001.view;
  * @author pepe
  */
 public class Menu {
+    
+    public Menu(){}
+    
 public void menuPrincipal(){
     System.out.println("MENU PRINCIPAL");
     System.out.println("1 - Listados");
@@ -29,7 +32,7 @@ public void listados(){
 public void modificarPeliculas(){
     System.out.println("MENU MODIFICAR PELICULAS");
     System.out.println("1 - Nueva Película");
-    System.out.println("2 - Modificar Película");
+    System.out.println("2 - Modificar atributos");
     System.out.println("3 - Borrar Película");
     System.out.println("4 - Salir");
     }
@@ -46,13 +49,13 @@ public void modificarUnaPelicula(){
 public void modificarSeries(){
     System.out.println("MENU MODIFICAR SERIES");
     System.out.println("1 - Nueva Serie");
-    System.out.println("2 - Modificar Serie");
+    System.out.println("2 - Modificar una Serie");
     System.out.println("3 - Borrar Serie");
     System.out.println("4 - Salir");
     }
 public void modificarSerie(){
     System.out.println("MENU MODIFICAR SERIE");
-    System.out.println("1 - Modificar una serie");
+    System.out.println("1 - Modificar atributos");
     System.out.println("2 - Modificar Temporada");
     System.out.println("3 - Nueva Temporada");
     System.out.println("4 - Borrar Temporada");
@@ -69,7 +72,7 @@ public void modificarUnaSerie(){
     }
 public void modificarTemporada(){
     System.out.println("MENU MODIFICAR TEMPORADA");
-    System.out.println("1 - Modificar una Temporada");
+    System.out.println("1 - Modificar atributos");
     System.out.println("2 - Modificar Capitulo");
     System.out.println("3 - Nuevo Capitulo");
     System.out.println("4 - Borrar Capitulo");

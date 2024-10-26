@@ -4,6 +4,8 @@
  */
 package accesodatospractica001;
 
+import accesodatospractica001.controller.MainController;
+
 /**
  *
  * @author pepe
@@ -15,6 +17,8 @@ public class AccesoDatosPractica001 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        new MainController();
     }
     
 }

@@ -4,6 +4,7 @@
  */
 package accesodatospractica001.controller;
 
+import accesodatospractica001.view.Menu;
 import java.util.Scanner;
 
 /**
@@ -13,14 +14,23 @@ import java.util.Scanner;
 public class MainController {
     
     Scanner consola ;
+    Menu menu;
     
     public MainController(){
         consola = new Scanner(System.in);
+        menu = new Menu();
+        
+        while(mainMenuController()){
+        
+        
+        }
+        
     }
     
-    public void MainMenuController(){
+    public boolean mainMenuController(){
     
         //LLamar funcion mostrar menu principal
+        menu.menuPrincipal();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -51,19 +61,21 @@ public class MainController {
             } 
             case "6":{
                 //Salir
-                break;
+                return false;
             } 
             default:{
                 System.err.println("Opcion invalida >:(");
             }
                 
         }
+        return true;
     
     }
     
     public void menuImportarExportar(){
     
         //LLamar funcion mostrar menu importar exportar
+        menu.importarExportar();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -90,6 +102,7 @@ public class MainController {
     public void menuBusquedaAvanzada(){
     
         //LLamar funcion mostrar menu busqueda avanzada
+        menu.busqueda();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -116,6 +129,7 @@ public class MainController {
     public void menuModificarSeries(){
     
         //LLamar funcion mostrar menu modificar series
+        menu.modificarSeries();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -147,6 +161,7 @@ public class MainController {
     public void menuModificarUnaSerie(){
     
         //LLamar funcion mostrar menu modificar una pelicula
+        menu.modificarSerie();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -187,6 +202,7 @@ public class MainController {
     public void menuModificarTemporada(){
     
         //LLamar funcion mostrar menu modificar temporadas
+        menu.modificarTemporada();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -227,6 +243,7 @@ public class MainController {
     public void menuModificarAtributosCapitulos(){
     
         //LLamar funcion mostrar menu modificar atributos del capitulo
+        menu.modificarUnCapitulo();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -257,6 +274,7 @@ public class MainController {
     public void menuCambiarAtributosTemporada(){
     
         //LLamar funcion mostrar menu cambiar atributos temporada
+        menu.modificarUnaTemporada();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -291,6 +309,7 @@ public class MainController {
     public void menuCambiarAtributosSerie(){
         
         //LLamar funcion mostrar menu cambiar atributos serie
+        menu.modificarUnaSerie();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -324,6 +343,7 @@ public class MainController {
     public void menuModificarPeliculas(){
     
         //LLamar funcion mostrar menu modificar peliculas
+        menu.modificarPeliculas();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -355,6 +375,7 @@ public class MainController {
     public void menuModificaUnaPelicula(){
     
         //LLamar funcion mostrar menu modificar una pelicula
+        menu.modificarUnaPelicula();
         String opcion = consola.nextLine();
         
         switch (opcion) {
@@ -393,6 +414,7 @@ public class MainController {
     public void menuListado(){
     
         //LLamar funcion mostrar menu listado
+        menu.listados();
         String opcion = consola.nextLine();
         
         switch (opcion) {
