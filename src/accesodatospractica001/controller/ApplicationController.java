@@ -151,4 +151,42 @@ public class ApplicationController {
         return null;
     }
 
+    /**
+    * 
+    * Busca una serie por su titulo
+    * 
+    * @param s serie a modificar
+    * @param campo opcion a modificar de la serie
+    * 
+    * 
+    */
+    public void modifySerieAtribute(Serie s, String campo){
+    
+        Serie modifiedSerie = sc.modificateSerie(s,campo);
+        
+        //Agregar la serie a la lista de series
+        ArrayList<Serie> series = videoclub.getSeries();
+        series.remove(s);
+        series.add(modifiedSerie);
+        videoclub.setSeries(series);
+        
+        //Actualizar xml
+        new Exportar().escribirXML(videoclub);
+    
+    
+    }
+    
+    
+    /**
+    * 
+    * Busca una serie por su titulo
+    * 
+    * @param s serie la cual se van a mostrar sus temporadas
+    * 
+    * 
+    */
+    public void listTemporadas(Serie s){
+        
+        
+    }
 }

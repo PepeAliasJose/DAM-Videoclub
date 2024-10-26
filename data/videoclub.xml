@@ -147,7 +147,7 @@
       <boolean>true</boolean>
      </void>
      <void property="sinopsis">
-      <string>UN gato robotico</string>
+      <string>Un gato robot OMG</string>
      </void>
      <void property="temporadas">
       <object class="java.util.ArrayList">
@@ -187,7 +187,7 @@
       </object>
      </void>
      <void property="title">
-      <string>Doraemon</string>
+      <string>Doraemon 2</string>
      </void>
     </object>
    </void>

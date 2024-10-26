@@ -5,6 +5,7 @@
 package accesodatospractica001.controller;
 
 import accesodatospractica001.view.Menu;
+import accesodatospractica001.model.*;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -171,40 +172,51 @@ public class MainController {
     public void menuModificarUnaSerie(){
     
         //LLamar funcion mostrar menu modificar una pelicula
-        menu.modificarSerie();
-        String opcion = consola.nextLine();
+        System.out.println("Titulo de la serie a modificar?");
+        Serie serieModificar = ac.seachSerieByTitle(consola.nextLine());
         
-        switch (opcion) {
-            case "1":{
-                //Cambiar atributos de la serie
-                menuCambiarAtributosSerie();
-                break;
-            }   
-            case "2":{
-                //Modificar una temporada
-                menuModificarTemporada();
-                break;
-            } 
-            case "3":{
-                //Nueva temporada
-                break;
-            } 
-            case "4":{
-                //Borrar temporada
-                break;
-            } 
-            case "5":{
-                //Listar temporadas
-                break;
-            } 
-            case "6":{
-                //Salir
-                break;
-            } 
-            default:{
-                System.err.println("Opcion invalida >:(");
+        if(serieModificar!=null){
+            
+            menu.modificarSerie();
+            String opcion = consola.nextLine();
+
+            switch (opcion) {
+                case "1":{
+                    //Cambiar atributos de la serie
+                    menuCambiarAtributosSerie(serieModificar);
+                    break;
+                }   
+                case "2":{
+                    //Modificar una temporada
+                    menuModificarTemporada();
+                    break;
+                } 
+                case "3":{
+                    //Nueva temporada
+                    //ac.newTemporada()
+                    break;
+                } 
+                case "4":{
+                    //Borrar temporada
+                    //ac.deleteTemporada()
+                    break;
+                } 
+                case "5":{
+                    //Listar temporadas
+                    ac.listTemporadas(serieModificar);
+                    break;
+                } 
+                case "6":{
+                    //Salir
+                    break;
+                } 
+                default:{
+                    System.err.println("Opcion invalida >:(");
+                }
+
             }
-                
+        }else{
+            System.err.println("SERIE NO ENCONTRADA");
         }
     
     }
@@ -316,37 +328,24 @@ public class MainController {
         
     }
     
-    public void menuCambiarAtributosSerie(){
+    public void menuCambiarAtributosSerie(Serie s){
         
         //LLamar funcion mostrar menu cambiar atributos serie
         menu.modificarUnaSerie();
         String opcion = consola.nextLine();
         
-        switch (opcion) {
-            case "1":{
-                //Cambiar titulo
-                break;
-            }   
-            case "2":{
-                //Cambiar sinpsis
-                break;
-            } 
-            case "3":{
-                //Cambiar director
-                break;
-            } 
-            case "4":{
-                //Cambiar estado
-                break;
-            } 
-            case "5":{
-                //Salir
-                break;
-            } 
-            default:{
+        //Mandar la opcion seleccionada al selector en serie controller
+        try {
+            int numeroOpcion = Integer.parseInt(opcion);
+        
+            if(numeroOpcion>0 && numeroOpcion<5){
+                ac.modifySerieAtribute(s, opcion);
+            }else if(numeroOpcion == 5){}
+            else{
                 System.err.println("Opcion invalida >:(");
             }
-                
+        } catch (NumberFormatException e) {
+            System.err.println("Opcion muy mala >:(");
         }
     }
     

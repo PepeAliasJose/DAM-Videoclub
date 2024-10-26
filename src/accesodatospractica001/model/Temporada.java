@@ -68,6 +68,15 @@ public class Temporada implements Serializable{
     public void setCapitulos(ArrayList<Capitulo> capitulos) {
         this.capitulos = capitulos;
     }
+
+    @Override
+    public String toString() {
+        
+        
+        return "Temporada{" + "seasonNumber=" + seasonNumber + ", title=" + title + ", sinopsis=" + sinopsis + ", year=" + year + ", capitulos=" + capitulos + '}';
+    
+    
+    }
     
     
     

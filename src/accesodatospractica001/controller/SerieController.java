@@ -145,4 +145,60 @@ public class SerieController {
         return cap;
     
     }
+    
+    /**
+    * 
+    * 
+    * throws SerieException si algun dato esta mal
+    * 
+    * @return una version modificada de la serie introducida
+    * 
+    * @since 1.0
+    * 
+    * 
+    */
+    public Serie modificateSerie(Serie s,String campo){
+    
+        Scanner sc = new Scanner(System.in);
+        
+        switch (campo) {
+            case "1":{
+                //Cambiar titulo
+                System.out.println("Escribe el nuevo titulo");
+                s.setTitle(sc.nextLine());
+                break;
+            }   
+            case "2":{
+                //Cambiar sinpsis
+                System.out.println("Escribe la nueva sinopsis");
+                s.setSinopsis(sc.nextLine());
+                break;
+            } 
+            case "3":{
+                //Cambiar director
+                System.out.println("Escribe el nuevo director");
+                s.setDirector(sc.nextLine());
+                break;
+            } 
+            case "4":{
+                //Cambiar estado
+                System.out.println("Pon el nuevo estado");
+                String emision = sc.nextLine();
+                if(emision.equals("s")){
+                    s.setEmision(true);
+                }else if (emision.equals("n")){
+                    s.setEmision(false);
+                }else{
+                    //Lanzar excepcion
+                }
+                break;
+            } 
+            default:{
+                System.err.println("Opcion invalida >:(");
+            }
+                
+        }
+    
+        return s;
+    }
 }
