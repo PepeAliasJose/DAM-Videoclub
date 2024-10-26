@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="21.0.4" class="java.beans.XMLDecoder">
+<java version="23" class="java.beans.XMLDecoder">
  <object class="accesodatospractica001.model.Videoclub" id="Videoclub0">
   <void property="peliculas">
-   <void method="add">
-    <object class="accesodatospractica001.model.Pelicula">
-     <void property="director">
-      <string>Copola</string>
-     </void>
-     <void property="duration">
-      <string>250</string>
-     </void>
-     <void property="synopsis">
-      <string>Un tio en una boda</string>
-     </void>
-     <void property="title">
-      <string>El padrino</string>
-     </void>
-     <void property="year">
-      <string>1972</string>
-     </void>
-    </object>
-   </void>
    <void method="add">
     <object class="accesodatospractica001.model.Pelicula">
      <void property="director">
@@ -37,6 +18,25 @@
      </void>
      <void property="year">
       <string>2010</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="accesodatospractica001.model.Pelicula">
+     <void property="director">
+      <string>Copola</string>
+     </void>
+     <void property="duration">
+      <string>250</string>
+     </void>
+     <void property="synopsis">
+      <string>Un tio en una boda</string>
+     </void>
+     <void property="title">
+      <string>El padrino</string>
+     </void>
+     <void property="year">
+      <string>2024</string>
      </void>
     </object>
    </void>

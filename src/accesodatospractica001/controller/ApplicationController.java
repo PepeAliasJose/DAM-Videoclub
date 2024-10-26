@@ -125,6 +125,9 @@ public class ApplicationController {
         Pelicula pNueva=pc.modifyPelicula(p, eleccion);
         listaPeliculas.remove(p);
         listaPeliculas.add(pNueva);
+        //Actualizar xml
+        videoclub.setPeliculas(listaPeliculas);
+        new Exportar().escribirXML(videoclub);
     }
     
     /**
