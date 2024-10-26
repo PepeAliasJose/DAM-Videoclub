@@ -50,7 +50,12 @@ public class PeliculaController {
 
         return p;
     }
-
+/**
+   *
+   * La funcion recibe una pelicula junto con la elección y con el switch
+   * y ejecuta la funcion que haya elegido el usuario y devuelve la pelicula modificada.
+   * 
+*/
     public Pelicula modifyPelicula(Pelicula p, String eleccion) {
         Scanner sca = new Scanner(System.in);
         switch (eleccion) {

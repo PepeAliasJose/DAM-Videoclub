@@ -40,6 +40,63 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="accesodatospractica001.model.Pelicula">
+     <void property="director">
+      <string>La alba</string>
+     </void>
+     <void property="duration">
+      <string>25</string>
+     </void>
+     <void property="synopsis">
+      <string>Un nota sierra</string>
+     </void>
+     <void property="title">
+      <string>Saw</string>
+     </void>
+     <void property="year">
+      <string>2004</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="accesodatospractica001.model.Pelicula">
+     <void property="director">
+      <string>No es la alba</string>
+     </void>
+     <void property="duration">
+      <string>120</string>
+     </void>
+     <void property="synopsis">
+      <string>La alba que esta esconhada</string>
+     </void>
+     <void property="title">
+      <string>El conho de mi prima</string>
+     </void>
+     <void property="year">
+      <string>1984</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="accesodatospractica001.model.Pelicula">
+     <void property="director">
+      <string>Pipi lastru</string>
+     </void>
+     <void property="duration">
+      <string>45</string>
+     </void>
+     <void property="synopsis">
+      <string>yo que se ermano</string>
+     </void>
+     <void property="title">
+      <string>El golpe</string>
+     </void>
+     <void property="year">
+      <string>1973</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="series">
    <void method="add">
