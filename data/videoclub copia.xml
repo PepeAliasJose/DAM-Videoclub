@@ -191,6 +191,59 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="accesodatospractica001.model.Serie">
+     <void property="director">
+      <string>un japones</string>
+     </void>
+     <void property="emision">
+      <boolean>true</boolean>
+     </void>
+     <void property="sinopsis">
+      <string>UN gato robotico</string>
+     </void>
+     <void property="temporadas">
+      <object class="java.util.ArrayList">
+       <void method="add">
+        <object class="accesodatospractica001.model.Temporada">
+         <void property="capitulos">
+          <object class="java.util.ArrayList">
+           <void method="add">
+            <object class="accesodatospractica001.model.Capitulo">
+             <void property="duration">
+              <string>80</string>
+             </void>
+             <void property="sinopsis">
+              <string>llega doremon al pasado</string>
+             </void>
+             <void property="title">
+              <string>Hola nobita</string>
+             </void>
+            </object>
+           </void>
+          </object>
+         </void>
+         <void property="seasonNumber">
+          <string>1</string>
+         </void>
+         <void property="sinopsis">
+          <string>doraemon nace</string>
+         </void>
+         <void property="title">
+          <string>El nacimiento de doraemon</string>
+         </void>
+         <void property="year">
+          <string>1990</string>
+         </void>
+        </object>
+       </void>
+      </object>
+     </void>
+     <void property="title">
+      <string>Doraemon 2</string>
+     </void>
+    </object>
+   </void>
   </void>
  </object>
 </java>
