@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import accesodatospractica001.model.*;
+import accesodatospractica001.controller.*;
 /**
  *
  * @author pepe
@@ -388,30 +389,35 @@ public class MainController {
         //LLamar funcion mostrar menu modificar una pelicula
         menu.modificarUnaPelicula();
         String opcion = consola.nextLine();
-        
+        Pelicula p= ac.getPeliculaPorTitulo();
         switch (opcion) {
             case "1":{
-                //Cambiar titulo
+                ac.modificarPelicula(p, opcion);
                 break;
             }   
             case "2":{
                 //Cambiar año
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "3":{
                 //Cambiar sinopsis
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "4":{
                 //Cambiar duracion
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "5":{
                 //Cambiar director
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "6":{
                 //Salir
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             default:{
