@@ -4,13 +4,14 @@
  */
 package accesodatospractica001.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author pepe
  */
-public class Temporada {
+public class Temporada implements Serializable{
     
     String seasonNumber;
     String title;

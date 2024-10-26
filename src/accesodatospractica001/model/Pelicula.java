@@ -4,11 +4,13 @@
  */
 package accesodatospractica001.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pepe
  */
-public class Pelicula {
+public class Pelicula implements Serializable{
     String title;
     String year;
     String synopsis;
