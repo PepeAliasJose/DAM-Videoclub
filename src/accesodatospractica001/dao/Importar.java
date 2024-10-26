@@ -22,7 +22,7 @@ public class Importar {
     
     public Videoclub leerXML()throws IOException {
             XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("data/videoclub.xml")));
-            Videoclub vc= (Videoclub)d.readObject();
+            Videoclub vc = (Videoclub) d.readObject();
             return vc;
     }
 }

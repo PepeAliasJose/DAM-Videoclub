@@ -99,6 +99,9 @@ public class ApplicationController {
     /**
      * Le pide al usuario el titulod e la pelicula que quiere buscar y le
      * devuelve el objeto pelicula.
+     * 
+     * @return una pelicula si se encuentra la pelicula, null si no existe la pelicula
+     *
      */
     public Pelicula getPeliculaPorTitulo() {
         System.out.println("Dime el nombre de la pelicula que quieres modificar");
@@ -112,12 +115,15 @@ public class ApplicationController {
         }
         return null;
     }
-/**
- * El usuario selecciona lo que quiere hacer con la pelicula y luego esta funcion se la manda a peliculaController
- * para que salte el otro switch de este.
- * @param p
- * @param eleccion 
- */
+    
+    /**
+     * El usuario selecciona lo que quiere hacer con la pelicula y 
+     * luego esta funcion se la manda a peliculaController
+     * para que salte el otro switch de este.
+     * 
+     * @param p pelicula a modificar
+     * @param eleccion seleccion de campo a modificar
+     */
     public void modificarPelicula(Pelicula p, String eleccion) {
         ArrayList<Pelicula> listaPeliculas = videoclub.getPeliculas();
 
@@ -130,17 +136,19 @@ public class ApplicationController {
         new Exportar().escribirXML(videoclub);
     }
     
+    /**
+     * 
+     * Borra la pelicula que seleccione el usuario por consola
+     * 
+     */
     public void deletePelicula(){
-        ArrayList<Pelicula> listaPeliculas = videoclub.getPeliculas();
-        
-        
-        
-        Pelicula p= getPeliculaPorTitulo();
+        ArrayList<Pelicula> listaPeliculas = videoclub.getPeliculas();   
+        Pelicula p = getPeliculaPorTitulo();
         if(p!=null){
-        listaPeliculas.remove(p);
-        videoclub.setPeliculas(listaPeliculas);
-        //Actualizar xml
-        new Exportar().escribirXML(videoclub);
+            listaPeliculas.remove(p);
+            videoclub.setPeliculas(listaPeliculas);
+            //Actualizar xml
+            new Exportar().escribirXML(videoclub);
         }else{
             System.err.println("NO SE HA PODIDO BORRAR LA PELICULA");
         }
@@ -304,5 +312,53 @@ public class ApplicationController {
         
         new Exportar().escribirXML(videoclub);
 
+    }
+    
+    /**
+    * 
+    * Devuelve una temporada de una serie
+    * 
+    * @param s serie la cual se va a borrar la temporada
+    * @param seasonNumber numero de temporada a buscar
+    * 
+    * @return una Temporada si se encuentra, null si no se encuentra la temporada
+    * 
+    */
+    public Temporada findTemporadaByNumber(Serie s, String seasonNumber){
+        
+        ArrayList<Temporada> listaTemporada = s.getTemporadas();
+
+        
+        for(Temporada t: listaTemporada){
+            
+            if(t.getSeasonNumber().equals(seasonNumber)){
+            
+                return t;
+                
+            }
+        
+        }
+        
+        return null;
+
+    }
+    
+    /**
+    * 
+    * Lista los capitulos de una temporada
+    * 
+    * @param temp la temporada de donde se van a listar los capitulos
+    *
+    */
+    public void listCapitulos(Temporada temp){
+    
+        System.out.println("*** CAPITULOS ***");
+        System.out.println("");
+        
+        for(Capitulo c : temp.getCapitulos()){
+            System.out.println(c);
+            System.out.println("");
+        }
+    
     }
 }

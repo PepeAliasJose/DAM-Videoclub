@@ -189,7 +189,7 @@ public class MainController {
                 }   
                 case "2":{
                     //Modificar una temporada
-                    menuModificarTemporada();
+                    menuModificarTemporada(serieModificar);
                     break;
                 } 
                 case "3":{
@@ -222,43 +222,57 @@ public class MainController {
     
     }
     
-    public void menuModificarTemporada(){
+    public void menuModificarTemporada(Serie s){
     
         //LLamar funcion mostrar menu modificar temporadas
-        menu.modificarTemporada();
-        String opcion = consola.nextLine();
+        System.out.println("Escribe el numero de temporada a buscar");
+        String numeroTemporada = new Scanner(System.in).nextLine();
         
-        switch (opcion) {
-            case "1":{
-                //Cambiar atributos de la temporada
-                menuCambiarAtributosTemporada();
-                break;
-            }   
-            case "2":{
-                //Modificar capitulo de la temporada
-                menuModificarAtributosCapitulos();
-                break;
-            } 
-            case "3":{
-                //Nuevo capitulo
-                break;
-            } 
-            case "4":{
-                //Borrar capitulo
-                break;
-            } 
-            case "5":{
-                //Listar capitulos
-                break;
-            } 
-            case "6":{
-                //Salir
-                break;
-            } 
-            default:{
-                System.err.println("Opcion invalida >:(");
+        Temporada temp = ac.findTemporadaByNumber(s, numeroTemporada);
+        
+        if(temp!=null){
+        
+            menu.modificarTemporada();
+            String opcion = consola.nextLine();
+
+            switch (opcion) {
+                case "1":{
+                    //Cambiar atributos de la temporada
+                    menuCambiarAtributosTemporada();//TODO
+                    break;
+                }   
+                case "2":{
+                    //Modificar capitulo de la temporada
+                    menuModificarAtributosCapitulos();
+                    break;
+                } 
+                case "3":{
+                    //Nuevo capitulo
+                    //ac.newCapitulo(temp); //TODO
+                    break;
+                } 
+                case "4":{
+                    //Borrar capitulo
+                    //ac.deleteCapitulo(temp); //TODO
+                    break;
+                } 
+                case "5":{
+                    //Listar capitulos
+                    ac.listCapitulos(temp);
+                    break;
+                } 
+                case "6":{
+                    //Salir
+                    break;
+                } 
+                default:{
+                    System.err.println("Opcion invalida >:(");
+                }
+
             }
-                
+        
+        }else{
+            System.err.println("TEMPORADA NO ENCONTRADA");
         }
     
     }

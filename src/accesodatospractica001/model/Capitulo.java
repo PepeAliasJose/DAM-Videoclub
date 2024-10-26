@@ -47,6 +47,11 @@ public class Capitulo implements Serializable{
     public void setDuration(String duration) {
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-15s %10s minutos %n%s%n",title,duration,sinopsis);
+    }
     
     
 }
