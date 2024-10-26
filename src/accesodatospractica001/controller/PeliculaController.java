@@ -14,7 +14,17 @@ public class PeliculaController {
     
     public PeliculaController(){}
     
-    
+    /**
+    * 
+    * 
+    * throws PeliculaException if any data is incorrect 
+    * 
+    * @return new Pelicula created by user input
+    * 
+    * @since 1.0
+    * 
+    * 
+    */
     public Pelicula createPelicula(){
         //Aqui se lanzan las excepciones
         

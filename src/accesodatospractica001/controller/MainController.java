@@ -5,7 +5,10 @@
 package accesodatospractica001.controller;
 
 import accesodatospractica001.view.Menu;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,11 +24,16 @@ public class MainController {
     public MainController(){
         consola = new Scanner(System.in);
         menu = new Menu();
-        ac = new ApplicationController();
-        
-        while(mainMenuController()){
-            continue;
+        try {
+            ac = new ApplicationController();
+                    
+            while(mainMenuController()){
+                continue;
+            }
+        } catch (IOException ex) {
+            System.err.println("Error leyendo el videoclub, saliendo ...");
         }
+
         
     }
     
@@ -423,14 +431,17 @@ public class MainController {
         switch (opcion) {
             case "1":{
                 //Mostrar todo
+                ac.listAll();
                 break;
             }   
             case "2":{
                 //Mostrar todas la series
+                ac.listSeries();
                 break;
             } 
             case "3":{
-                //Mostrar todas las peliculas
+                //Mostrar todas las peliculas y series
+                ac.listPeliculas();
                 break;
             } 
             case "4":{

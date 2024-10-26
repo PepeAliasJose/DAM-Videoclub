@@ -71,7 +71,13 @@ public class Serie implements Serializable{
 
     @Override
     public String toString() {
-        return "Serie{" + "title=" + title + ", sinopsis=" + sinopsis + ", director=" + director + ", emision=" + emision + ", temporadas=" + temporadas + '}';
+   
+    String res = String.format("%-20s %-15s %10s%n%47s%n%36s temporadas",
+            title,director,emision?"En emision":"Terminada",
+            sinopsis,temporadas.size()
+            );
+    
+    return res;
     }
     
     

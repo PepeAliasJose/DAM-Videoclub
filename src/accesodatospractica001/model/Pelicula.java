@@ -70,7 +70,9 @@ public class Pelicula implements Serializable{
 
     @Override
     public String toString() {
-        return "Pelicula{" + "title=" + title + ", year=" + year + ", synopsis=" + synopsis + ", duration=" + duration + ", director=" + director + '}';
+        
+        return String.format("%-20s %8s %12s%n%-42s%n%34s minutos",
+                title.toUpperCase(),year,director,synopsis,duration);
     }
     
 }
