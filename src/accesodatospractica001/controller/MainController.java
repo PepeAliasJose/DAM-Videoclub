@@ -8,7 +8,8 @@ import accesodatospractica001.view.Menu;
 import accesodatospractica001.model.*;
 import java.io.IOException;
 import java.util.Scanner;
-
+import accesodatospractica001.model.*;
+import accesodatospractica001.controller.*;
 /**
  *
  * @author pepe
@@ -368,6 +369,7 @@ public class MainController {
             } 
             case "3":{
                 //Borrar pelicula
+                ac.deletePelicula();
                 break;
             } 
             case "4":{
@@ -387,30 +389,35 @@ public class MainController {
         //LLamar funcion mostrar menu modificar una pelicula
         menu.modificarUnaPelicula();
         String opcion = consola.nextLine();
-        
+        Pelicula p= ac.getPeliculaPorTitulo();
         switch (opcion) {
             case "1":{
-                //Cambiar titulo
+                ac.modificarPelicula(p, opcion);
                 break;
             }   
             case "2":{
                 //Cambiar año
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "3":{
                 //Cambiar sinopsis
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "4":{
                 //Cambiar duracion
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "5":{
                 //Cambiar director
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             case "6":{
                 //Salir
+                ac.modificarPelicula(p, opcion);
                 break;
             } 
             default:{
