@@ -82,6 +82,7 @@ public class MainController {
     
     }
     
+    //TODO
     public void menuImportarExportar(){
     
         //LLamar funcion mostrar menu importar exportar
@@ -109,6 +110,7 @@ public class MainController {
     
     }
     
+    //TODO
     public void menuBusquedaAvanzada(){
     
         //LLamar funcion mostrar menu busqueda avanzada
@@ -348,41 +350,8 @@ public class MainController {
         menu.modificarUnaPelicula();
         String opcion = consola.nextLine();
         Pelicula p= ac.getPeliculaPorTitulo();
-        switch (opcion) {
-            case "1":{
-                ac.modificarPelicula(p, opcion);
-                break;
-            }   
-            case "2":{
-                //Cambiar año
-                ac.modificarPelicula(p, opcion);
-                break;
-            } 
-            case "3":{
-                //Cambiar sinopsis
-                ac.modificarPelicula(p, opcion);
-                break;
-            } 
-            case "4":{
-                //Cambiar duracion
-                ac.modificarPelicula(p, opcion);
-                break;
-            } 
-            case "5":{
-                //Cambiar director
-                ac.modificarPelicula(p, opcion);
-                break;
-            } 
-            case "6":{
-                //Salir
-                ac.modificarPelicula(p, opcion);
-                break;
-            } 
-            default:{
-                System.err.println("Opcion invalida >:(");
-            }
-                
-        }
+        
+        ac.modificarPelicula(p, opcion);
     
     }
     

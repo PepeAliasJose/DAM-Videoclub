@@ -22,11 +22,11 @@ public class Serie implements Serializable{
     public Serie(){}
 
     public Serie(String title, String sinopsis, String director, boolean emision, ArrayList<Temporada> temporadas) {
-        this.title = title;
-        this.sinopsis = sinopsis;
-        this.director = director;
-        this.emision = emision;
-        this.temporadas = temporadas;
+        setTitle(title);
+        setSinopsis(sinopsis);
+        setDirector(director);
+        setEmision(emision);
+        setTemporadas(temporadas);
     }
 
     public String getTitle() {

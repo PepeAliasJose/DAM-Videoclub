@@ -4,6 +4,7 @@
  */
 package accesodatospractica001.model;
 
+import accesodatospractica001.exceptions.PeliculaException;
 import java.io.Serializable;
 
 /**
@@ -20,12 +21,12 @@ public class Pelicula implements Serializable{
     public Pelicula() {
     }
 
-    public Pelicula(String title, String year, String synopsis, String duration, String director) {
-        this.title = title;
-        this.year = year;
-        this.synopsis = synopsis;
-        this.duration = duration;
-        this.director = director;
+    public Pelicula(String title, String year, String synopsis, String duration, String director) throws PeliculaException {
+        setTitle(title);
+        setYear(year);
+        setSynopsis(synopsis);
+        setDirector(director);
+        setDuration(duration);
     }
 
     public String getTitle() {
@@ -52,16 +53,31 @@ public class Pelicula implements Serializable{
         this.title = title;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setYear(String year) throws PeliculaException {
+        try {
+            if(Integer.parseInt(year)<0){
+                throw new PeliculaException("Año");
+            }
+            this.year = year;
+        } catch (NumberFormatException e) {
+            throw new PeliculaException("Año");
+        }
     }
 
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setDuration(String duration) throws PeliculaException {
+        try {
+            if(Integer.parseInt(duration)<0){
+                throw new PeliculaException("Año");
+            }
+            this.duration = duration;
+        } catch (NumberFormatException e) {
+            throw new PeliculaException("Año");
+        }
+        
     }
 
     public void setDirector(String director) {

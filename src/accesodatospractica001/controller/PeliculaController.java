@@ -4,6 +4,7 @@
  */
 package accesodatospractica001.controller;
 
+import accesodatospractica001.exceptions.PeliculaException;
 import accesodatospractica001.model.*;
 import java.util.Scanner;
 
@@ -18,8 +19,10 @@ public class PeliculaController {
 
     /**
      *
+     * 
+     * Crea una pelicula
      *
-     * throws PeliculaException if any data is incorrect
+     * @exception  PeliculaException if any data is incorrect
      *
      * @return new Pelicula created by user input
      *
@@ -27,7 +30,7 @@ public class PeliculaController {
      *
      *
      */
-    public Pelicula createPelicula() {
+    public Pelicula createPelicula() throws PeliculaException {
         //Aqui se lanzan las excepciones
 
         Scanner sc = new Scanner(System.in);
@@ -55,8 +58,15 @@ public class PeliculaController {
    * La funcion recibe una pelicula junto con la elección y con el switch
    * y ejecuta la funcion que haya elegido el usuario y devuelve la pelicula modificada.
    * 
+   * @param p pelicula a modificar
+   * @param eleccion opcion a modificar
+   *
+   * @exception  PeliculaException if any data is incorrect
+   * 
+   * @return la pelicula modificada
+   * 
 */
-    public Pelicula modifyPelicula(Pelicula p, String eleccion) {
+    public Pelicula modifyPelicula(Pelicula p, String eleccion) throws PeliculaException {
         Scanner sca = new Scanner(System.in);
         switch (eleccion) {
             case "1": {
@@ -87,7 +97,8 @@ public class PeliculaController {
                 return p;
             }
             default:{
-                return null;
+                System.err.println("OPCION INVALIDA");
+                throw new PeliculaException();
             }
         }
     }

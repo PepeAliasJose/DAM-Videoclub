@@ -5,10 +5,15 @@
 package accesodatospractica001.controller;
 
 import accesodatospractica001.dao.*;
+import accesodatospractica001.exceptions.CapituloException;
+import accesodatospractica001.exceptions.PeliculaException;
+import accesodatospractica001.exceptions.SerieException;
+import accesodatospractica001.exceptions.TemporadaException;
 import accesodatospractica001.model.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 /**
  *
@@ -22,6 +27,12 @@ public class ApplicationController {
 
     Videoclub videoclub;
 
+    /**
+     *
+     * Crea una instancia del controlador de la aplicacion
+     * lanza IOException si no se ha podido leer ningun dato del XML
+     * 
+     */
     public ApplicationController() throws IOException {
 
         pc = new PeliculaController();
@@ -30,6 +41,11 @@ public class ApplicationController {
         videoclub = new Importar().leerXML();
     }
 
+    /**
+     *
+     * Lista todas las peliculas
+     * 
+     */
     public void listPeliculas() {
         System.out.println("*** PELICULAS ***");
         for (Pelicula p : videoclub.getPeliculas()) {
@@ -38,6 +54,11 @@ public class ApplicationController {
         }
     }
 
+    /**
+     *
+     * Lista todas las series
+     * 
+     */
     public void listSeries() {
         System.out.println("**** SERIES ****");
         for (Serie s : videoclub.getSeries()) {
@@ -47,6 +68,11 @@ public class ApplicationController {
 
     }
 
+    /**
+     *
+     * Lista todo el contenido del XML
+     * 
+     */
     public void listAll() {
         listPeliculas();
         listSeries();
@@ -59,18 +85,24 @@ public class ApplicationController {
      *
      */
     public void newPelicula() {
-        //Aqui se recogen las excepciones
 
         //Pedir una nueva pelicula al controlador
-        Pelicula newPelicula = pc.createPelicula();
+        Pelicula newPelicula;
+        try {
+            newPelicula = pc.createPelicula();
+            
+            //Agregar la pelicula a la lista de peliculas
+            ArrayList<Pelicula> peliculas = videoclub.getPeliculas();
+            peliculas.add(newPelicula);
+            videoclub.setPeliculas(peliculas);
 
-        //Agregar la pelicula a la lista de peliculas
-        ArrayList<Pelicula> peliculas = videoclub.getPeliculas();
-        peliculas.add(newPelicula);
-        videoclub.setPeliculas(peliculas);
+            //Actualizar xml
+            new Exportar().escribirXML(videoclub);
+        } catch (PeliculaException ex) {
+            System.err.println(ex.getMessage());
+        }
 
-        //Actualizar xml
-        new Exportar().escribirXML(videoclub);
+ 
 
     }
 
@@ -84,20 +116,26 @@ public class ApplicationController {
         //Aqui se recogen las excepciones
 
         //Pedir una nueva serie al controlador
-        Serie newSerie = sc.createSerie();
+        Serie newSerie;
+        try {
+            newSerie = sc.createSerie();
+            
+            //Agregar la serie a la lista de series
+            ArrayList<Serie> series = videoclub.getSeries();
+            series.add(newSerie);
+            videoclub.setSeries(series);
 
-        //Agregar la serie a la lista de series
-        ArrayList<Serie> series = videoclub.getSeries();
-        series.add(newSerie);
-        videoclub.setSeries(series);
+            //Actualizar xml
+            new Exportar().escribirXML(videoclub);
+        } catch (SerieException | TemporadaException | CapituloException  ex) {
+            System.err.println(ex.getMessage());
+        } 
 
-        //Actualizar xml
-        new Exportar().escribirXML(videoclub);
 
     }
 
     /**
-     * Le pide al usuario el titulod e la pelicula que quiere buscar y le
+     * Le pide al usuario el titulo de la pelicula que quiere buscar y le
      * devuelve el objeto pelicula.
      * 
      * @return una pelicula si se encuentra la pelicula, null si no existe la pelicula
@@ -128,12 +166,18 @@ public class ApplicationController {
         ArrayList<Pelicula> listaPeliculas = videoclub.getPeliculas();
 
         
-        Pelicula pNueva=pc.modifyPelicula(p, eleccion);
-        listaPeliculas.remove(p);
-        listaPeliculas.add(pNueva);
-        //Actualizar xml
-        videoclub.setPeliculas(listaPeliculas);
-        new Exportar().escribirXML(videoclub);
+        Pelicula pNueva;
+        try {
+            pNueva = pc.modifyPelicula(p, eleccion);
+            listaPeliculas.remove(p);
+            listaPeliculas.add(pNueva);
+            //Actualizar xml
+            videoclub.setPeliculas(listaPeliculas);
+            new Exportar().escribirXML(videoclub);
+        } catch (PeliculaException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
     }
     
     /**
@@ -156,7 +200,7 @@ public class ApplicationController {
     
     /**
     * 
-    * Borra la serie especificada del videoclub y actualiza el XML
+    * Borra la serie que seleccione el usuario por consola
     * 
     */
     public void deleteSerie(){
@@ -210,7 +254,7 @@ public class ApplicationController {
 
     /**
     * 
-    * Modifica una serie
+    * Modifica los atributos de una serie
     * 
     * @param s serie a modificar
     * @param campo opcion a modificar de la serie
@@ -219,16 +263,20 @@ public class ApplicationController {
     */
     public void modifySerieAtribute(Serie s, String campo){
     
-        Serie modifiedSerie = sc.modificateSerie(s,campo);
-        
-        //Agregar la serie a la lista de series
-        ArrayList<Serie> series = videoclub.getSeries();
-        series.remove(s);
-        series.add(modifiedSerie);
-        videoclub.setSeries(series);
-        
-        //Actualizar xml
-        new Exportar().escribirXML(videoclub);
+        try {
+            Serie modifiedSerie = sc.modificateSerie(s,campo);
+            
+            //Agregar la serie a la lista de series
+            ArrayList<Serie> series = videoclub.getSeries();
+            series.remove(s);
+            series.add(modifiedSerie);
+            videoclub.setSeries(series);
+            
+            //Actualizar xml
+            new Exportar().escribirXML(videoclub);
+        } catch (SerieException ex) {
+            System.err.println(ex.getMessage());
+        }
     
     
     }
@@ -261,24 +309,28 @@ public class ApplicationController {
     */
     public void newTemporada(Serie s){
     
-        ArrayList<Temporada> listaTemporada = s.getTemporadas();
-        
-        Temporada newTemporada = sc.createTemporada();
-        
-        for(Temporada t: listaTemporada){
+        try {
+            ArrayList<Temporada> listaTemporada = s.getTemporadas();
             
-            if(t.getSeasonNumber().equals(newTemporada.getSeasonNumber())){
+            Temporada newTemporada = sc.createTemporada();
             
-                //Lanzar excepcion
+            for(Temporada t: listaTemporada){
+                
+                if(t.getSeasonNumber().equals(newTemporada.getSeasonNumber())){
+                    
+                   throw new TemporadaException();
+                    
+                }
                 
             }
         
-        }
-        
-        listaTemporada.add(newTemporada);
-        s.setTemporadas(listaTemporada);
-        
-        new Exportar().escribirXML(videoclub);
+            listaTemporada.add(newTemporada);
+            s.setTemporadas(listaTemporada);
+            
+            new Exportar().escribirXML(videoclub);
+        } catch (TemporadaException | CapituloException ex) {
+            System.err.println(ex.getMessage());
+        } 
     
     }
     
@@ -371,13 +423,17 @@ public class ApplicationController {
     */
     public void newCapitulo(Temporada t){
     
-        ArrayList<Capitulo> listaCapitulos = t.getCapitulos();
-        
-        Capitulo c = sc.createCapitulo();
-        listaCapitulos.add(c);
-        t.setCapitulos(listaCapitulos);
-        
-        new Exportar().escribirXML(videoclub);
+        try {
+            ArrayList<Capitulo> listaCapitulos = t.getCapitulos();
+            
+            Capitulo c = sc.createCapitulo();
+            listaCapitulos.add(c);
+            t.setCapitulos(listaCapitulos);
+            
+            new Exportar().escribirXML(videoclub);
+        } catch (CapituloException ex) {
+            System.err.println(ex.getMessage());
+        }
     
     }
     
@@ -456,11 +512,23 @@ public class ApplicationController {
     
     }
     
+    /**
+     *
+     * Modifica los atributos de una temporada
+     * 
+     * @param temp temporada a la que modiifcar los atributos
+     * @param opcion seleccion del atributo a modificar
+     * 
+     */
     public void modificarTemporadaAtribute(Temporada temp, String opcion){
     
-        sc.modificateTemporada(temp, opcion);
-    
-        new Exportar().escribirXML(videoclub);
+        try {
+            sc.modificateTemporada(temp, opcion);
+            
+            new Exportar().escribirXML(videoclub);
+        } catch (TemporadaException ex) {
+            System.err.println(ex.getMessage());
+        }
         
     }
 }

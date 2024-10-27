@@ -4,6 +4,9 @@
  */
 package accesodatospractica001.controller;
 
+import accesodatospractica001.exceptions.CapituloException;
+import accesodatospractica001.exceptions.SerieException;
+import accesodatospractica001.exceptions.TemporadaException;
 import accesodatospractica001.model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,16 +21,17 @@ public class SerieController {
     
     /**
     * 
+    * Crea una serie, 
     * 
-    * throws SerieException if any data is incorrect 
     * 
     * @return new Serie created by user input
     * 
     * @since 1.0
     * 
+    * @throws SerieException,TemporadaException, CapituloException if any data is incorrect 
     * 
     */
-    public Serie createSerie(){
+    public Serie createSerie() throws TemporadaException, CapituloException, SerieException{
     
         Serie serie = new Serie();
         
@@ -49,7 +53,7 @@ public class SerieController {
         }else if (emision.equals("n")){
             serie.setEmision(false);
         }else{
-            //Lanzar excepcion
+            throw new SerieException("Emision");
         }
       
         ArrayList<Temporada> listTemporadas = new ArrayList<Temporada>();
@@ -72,16 +76,17 @@ public class SerieController {
     
     /**
     * 
+    * Crea una nueva temporada
     * 
-    * throws TemporadaException if any data is incorrect 
     * 
     * @return new Temporada created by user input
     * 
     * @since 1.0
     * 
+    * throws TemporadaException, CapituloException si cualquier dato esta mal
     * 
     */
-    public Temporada createTemporada(){
+    public Temporada createTemporada() throws TemporadaException, CapituloException{
     
         Temporada tmp = new Temporada();
         Scanner sc = new Scanner(System.in);
@@ -118,16 +123,17 @@ public class SerieController {
     
     /**
     * 
+    * Crea un capitulo
     * 
-    * throws CapituloException if any data is incorrect 
     * 
     * @return new Capitulo created by user input
     * 
     * @since 1.0
     * 
+    * throws CapituloException if any data is incorrect 
     * 
     */
-    public Capitulo createCapitulo(){
+    public Capitulo createCapitulo() throws CapituloException{
     
         Capitulo cap = new Capitulo();
         Scanner sc = new Scanner(System.in);
@@ -148,16 +154,19 @@ public class SerieController {
     
     /**
     * 
+    * Modifica la serie
     * 
-    * throws SerieException si algun dato esta mal
+    * @param s serie a modificar
+    * @param campo opcion de la serie a modificar
     * 
     * @return una version modificada de la serie introducida
     * 
     * @since 1.0
     * 
+    * throws SerieException si algun dato esta mal
     * 
     */
-    public Serie modificateSerie(Serie s,String campo){
+    public Serie modificateSerie(Serie s,String campo) throws SerieException{
     
         Scanner sc = new Scanner(System.in);
         
@@ -189,7 +198,7 @@ public class SerieController {
                 }else if (emision.equals("n")){
                     s.setEmision(false);
                 }else{
-                    //Lanzar excepcion
+                    throw new SerieException("Emision");
                 }
                 break;
             } 
@@ -217,7 +226,7 @@ public class SerieController {
     * 
     * 
     */
-    public Temporada modificateTemporada(Temporada t, String option){
+    public Temporada modificateTemporada(Temporada t, String option) throws TemporadaException{
     
         switch (option) {
             case "1":{
@@ -273,7 +282,7 @@ public class SerieController {
     * 
     * 
     */
-    public Capitulo modificateCapitulo(Capitulo c, String option){
+    public Capitulo modificateCapitulo(Capitulo c, String option) throws CapituloException{
     
         
         

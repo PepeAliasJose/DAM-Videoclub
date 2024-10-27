@@ -4,6 +4,7 @@
  */
 package accesodatospractica001.model;
 
+import accesodatospractica001.exceptions.TemporadaException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -21,20 +22,28 @@ public class Temporada implements Serializable{
     
     public Temporada(){}
 
-    public Temporada(String seasonNumber, String title, String sinopsis, String year, ArrayList<Capitulo> capitulos) {
-        this.seasonNumber = seasonNumber;
-        this.title = title;
-        this.sinopsis = sinopsis;
-        this.year = year;
-        this.capitulos = capitulos;
+    public Temporada(String seasonNumber, String title, String sinopsis, String year, ArrayList<Capitulo> capitulos) throws TemporadaException {
+        setSeasonNumber(seasonNumber);
+        setTitle(title);
+        setSinopsis(sinopsis);
+        setYear(year);
+        setCapitulos(capitulos);
     }
 
     public String getSeasonNumber() {
         return seasonNumber;
     }
 
-    public void setSeasonNumber(String seasonNumber) {
-        this.seasonNumber = seasonNumber;
+    public void setSeasonNumber(String seasonNumber) throws TemporadaException {
+        try {
+            if(Integer.parseInt(seasonNumber)<0){
+                throw new TemporadaException("Numero de temporada");
+            }
+            this.seasonNumber = seasonNumber;
+        } catch (NumberFormatException e) {
+            throw new TemporadaException("Numero de temporada");
+        }
+        
     }
 
     public String getTitle() {
@@ -57,8 +66,15 @@ public class Temporada implements Serializable{
         return year;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setYear(String year) throws TemporadaException {
+        try {
+            if(Integer.parseInt(year)<0){
+                throw new TemporadaException("Año");
+            }
+            this.year = year;
+        } catch (NumberFormatException e) {
+            throw new TemporadaException("Año");
+        }
     }
 
     public ArrayList<Capitulo> getCapitulos() {

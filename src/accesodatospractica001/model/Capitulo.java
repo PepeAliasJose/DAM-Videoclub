@@ -4,6 +4,7 @@
  */
 package accesodatospractica001.model;
 
+import accesodatospractica001.exceptions.CapituloException;
 import java.io.Serializable;
 
 /**
@@ -18,10 +19,10 @@ public class Capitulo implements Serializable{
     
     public Capitulo(){}
 
-    public Capitulo(String title, String sinopsis, String duration) {
-        this.title = title;
-        this.sinopsis = sinopsis;
-        this.duration = duration;
+    public Capitulo(String title, String sinopsis, String duration) throws CapituloException {
+        setTitle(title);
+        setSinopsis(sinopsis);
+        setDuration(duration);
     }
 
     public String getTitle() {
@@ -44,8 +45,16 @@ public class Capitulo implements Serializable{
         return duration;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setDuration(String duration) throws CapituloException {
+        try {
+            if(Integer.parseInt(duration)<0){
+                throw new CapituloException("Duracion");
+            }
+            this.duration = duration;
+        } catch (NumberFormatException e) {
+            throw new CapituloException("Duracion");
+        }
+        
     }
 
     @Override
