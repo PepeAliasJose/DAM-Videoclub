@@ -101,10 +101,12 @@ public class MainController {
         switch (opcion) {
             case "1": {
                 //Importar
+                ac.importarPeliculasCSV();
                 break;
             }
             case "2": {
                 //Exportar
+                ac.exportarPeliculasCSV();
                 break;
             }
             case "3": {
