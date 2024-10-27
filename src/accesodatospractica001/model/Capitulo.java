@@ -11,13 +11,14 @@ import java.io.Serializable;
  *
  * @author pepe
  */
-public class Capitulo implements Serializable{
-    
+public class Capitulo implements Serializable {
+
     String title;
     String sinopsis;
     String duration;
-    
-    public Capitulo(){}
+
+    public Capitulo() {
+    }
 
     public Capitulo(String title, String sinopsis, String duration) throws CapituloException {
         setTitle(title);
@@ -47,20 +48,19 @@ public class Capitulo implements Serializable{
 
     public void setDuration(String duration) throws CapituloException {
         try {
-            if(Integer.parseInt(duration)<0){
+            if (Integer.parseInt(duration) < 0) {
                 throw new CapituloException("Duracion");
             }
             this.duration = duration;
         } catch (NumberFormatException e) {
             throw new CapituloException("Duracion");
         }
-        
+
     }
 
     @Override
     public String toString() {
-        return String.format("%-15s %10s minutos %n%s%n",title,duration,sinopsis);
+        return String.format("%-15s %10s minutos %n%s%n", title, duration, sinopsis);
     }
-    
-    
+
 }

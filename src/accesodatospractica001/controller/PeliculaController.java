@@ -14,15 +14,18 @@ import java.util.Scanner;
  */
 public class PeliculaController {
 
+    /**
+     *
+     */
     public PeliculaController() {
     }
 
     /**
      *
-     * 
+     *
      * Crea una pelicula
      *
-     * @exception  PeliculaException if any data is incorrect
+     * @exception PeliculaException if any data is incorrect
      *
      * @return new Pelicula created by user input
      *
@@ -53,31 +56,33 @@ public class PeliculaController {
 
         return p;
     }
-/**
-   *
-   * La funcion recibe una pelicula junto con la elección y con el switch
-   * y ejecuta la funcion que haya elegido el usuario y devuelve la pelicula modificada.
-   * 
-   * @param p pelicula a modificar
-   * @param eleccion opcion a modificar
-   *
-   * @exception  PeliculaException if any data is incorrect
-   * 
-   * @return la pelicula modificada
-   * 
-*/
+
+    /**
+     *
+     * La funcion recibe una pelicula junto con la elección y con el switch y
+     * ejecuta la funcion que haya elegido el usuario y devuelve la pelicula
+     * modificada.
+     *
+     * @param p pelicula a modificar
+     * @param eleccion opcion a modificar
+     *
+     * @exception PeliculaException if any data is incorrect
+     *
+     * @return la pelicula modificada
+     *
+     */
     public Pelicula modifyPelicula(Pelicula p, String eleccion) throws PeliculaException {
         Scanner sca = new Scanner(System.in);
         switch (eleccion) {
             case "1": {
                 System.out.println("Dime el titulo nuevo que le quieres poner");
-                
+
                 p.setTitle(sca.nextLine());
                 return p;
             }
             case "2": {
                 System.out.println("Dime el año que le quieres poner");
-                
+
                 p.setYear(sca.nextLine());
                 return p;
             }
@@ -96,7 +101,7 @@ public class PeliculaController {
                 p.setDirector(sca.nextLine());
                 return p;
             }
-            default:{
+            default: {
                 System.err.println("OPCION INVALIDA");
                 throw new PeliculaException();
             }

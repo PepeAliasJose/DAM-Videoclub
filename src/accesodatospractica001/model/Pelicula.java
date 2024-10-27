@@ -11,7 +11,8 @@ import java.io.Serializable;
  *
  * @author pepe
  */
-public class Pelicula implements Serializable{
+public class Pelicula implements Serializable {
+
     String title;
     String year;
     String synopsis;
@@ -55,7 +56,7 @@ public class Pelicula implements Serializable{
 
     public void setYear(String year) throws PeliculaException {
         try {
-            if(Integer.parseInt(year)<0){
+            if (Integer.parseInt(year) < 0) {
                 throw new PeliculaException("Año");
             }
             this.year = year;
@@ -70,14 +71,14 @@ public class Pelicula implements Serializable{
 
     public void setDuration(String duration) throws PeliculaException {
         try {
-            if(Integer.parseInt(duration)<0){
+            if (Integer.parseInt(duration) < 0) {
                 throw new PeliculaException("Año");
             }
             this.duration = duration;
         } catch (NumberFormatException e) {
             throw new PeliculaException("Año");
         }
-        
+
     }
 
     public void setDirector(String director) {
@@ -86,9 +87,9 @@ public class Pelicula implements Serializable{
 
     @Override
     public String toString() {
-        
+
         return String.format("%-20s %8s %12s%n%-42s%n%34s minutos",
-                title.toUpperCase(),year,director,synopsis,duration);
+                title.toUpperCase(), year, director, synopsis, duration);
     }
-    
+
 }

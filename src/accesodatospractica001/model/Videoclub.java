@@ -11,12 +11,12 @@ import java.util.ArrayList;
  *
  * @author pepe
  */
-public class Videoclub implements Serializable{
-    
+public class Videoclub implements Serializable {
+
     ArrayList<Serie> series;
     ArrayList<Pelicula> peliculas;
-    
-    public Videoclub(){
+
+    public Videoclub() {
         series = new ArrayList<Serie>();
         peliculas = new ArrayList<Pelicula>();
     }
@@ -41,7 +41,5 @@ public class Videoclub implements Serializable{
     public void setPeliculas(ArrayList<Pelicula> peliculas) {
         this.peliculas = peliculas;
     }
-    
-    
-    
+
 }

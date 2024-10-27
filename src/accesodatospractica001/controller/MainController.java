@@ -15,377 +15,420 @@ import accesodatospractica001.controller.*;
  * @author pepe
  */
 public class MainController {
-    
-    Scanner consola ;
+
+    Scanner consola;
     Menu menu;
     ApplicationController ac;
-    
-    
-    public MainController(){
+
+    /**
+     *
+     */
+    public MainController() {
         consola = new Scanner(System.in);
         menu = new Menu();
         try {
             ac = new ApplicationController();
-                    
-            while(mainMenuController()){
+
+            while (mainMenuController()) {
                 continue;
             }
         } catch (IOException ex) {
             System.err.println("Error leyendo el videoclub, saliendo ...");
         }
 
-        
     }
-    
-    public boolean mainMenuController(){
-    
+
+    /**
+     *
+     * @return
+     */
+    public boolean mainMenuController() {
+
         //LLamar funcion mostrar menu principal
         menu.menuPrincipal();
         String opcion = consola.nextLine();
-        
+
         switch (opcion) {
-            case "1":{
+            case "1": {
                 //Menu de listar peliculas y series
                 menuListado();
                 break;
-            }   
-            case "2":{
+            }
+            case "2": {
                 //Menu de modificar peliculas
                 menuModificarPeliculas();
                 break;
-            } 
-            case "3":{
+            }
+            case "3": {
                 //Menu de modificar series
                 menuModificarSeries();
                 break;
-            } 
-            case "4":{
+            }
+            case "4": {
                 //Menu de busqueda
                 menuBusquedaAvanzada();
                 break;
-            } 
-            case "5":{
+            }
+            case "5": {
                 //Menu de importar/Exportar
                 menuImportarExportar();
                 break;
-            } 
-            case "6":{
+            }
+            case "6": {
                 //Salir
                 return false;
-            } 
-            default:{
+            }
+            default: {
                 System.err.println("Opcion invalida >:(");
             }
-                
+
         }
         return true;
-    
+
     }
-    
+
     //TODO
-    public void menuImportarExportar(){
-    
+
+    /**
+     *
+     */
+    public void menuImportarExportar() {
+
         //LLamar funcion mostrar menu importar exportar
         menu.importarExportar();
         String opcion = consola.nextLine();
-        
+
         switch (opcion) {
-            case "1":{
+            case "1": {
                 //Importar
                 break;
-            }   
-            case "2":{
+            }
+            case "2": {
                 //Exportar
                 break;
-            } 
-            case "3":{
+            }
+            case "3": {
                 //Salir
                 break;
-            } 
-            default:{
+            }
+            default: {
                 System.err.println("Opcion invalida >:(");
             }
-                
+
         }
-    
+
     }
-    
+
     //TODO
-    public void menuBusquedaAvanzada(){
-    
+
+    /**
+     *
+     */
+    public void menuBusquedaAvanzada() {
+
         //LLamar funcion mostrar menu busqueda avanzada
         menu.busqueda();
         String opcion = consola.nextLine();
-        
+
         switch (opcion) {
-            case "1":{
+            case "1": {
                 //Busqueda por titulo
                 break;
-            }   
-            case "2":{
+            }
+            case "2": {
                 //Busqueda por año
                 break;
-            } 
-            case "3":{
+            }
+            case "3": {
                 //Salir
                 break;
-            } 
-            default:{
+            }
+            default: {
                 System.err.println("Opcion invalida >:(");
             }
-                
+
         }
-    
+
     }
-    
-    public void menuModificarSeries(){
-    
+
+    /**
+     *
+     */
+    public void menuModificarSeries() {
+
         //LLamar funcion mostrar menu modificar series
         menu.modificarSeries();
         String opcion = consola.nextLine();
-        
+
         switch (opcion) {
-            case "1":{
+            case "1": {
                 //Nueva serie
                 ac.newSerie();
                 break;
-            }   
-            case "2":{
+            }
+            case "2": {
                 //Modificar serie
                 menuModificarUnaSerie();
                 break;
-            } 
-            case "3":{
+            }
+            case "3": {
                 //Borrar serie
                 ac.deleteSerie();
                 break;
-            } 
-            case "4":{
+            }
+            case "4": {
                 //Salir
                 break;
-            } 
-            default:{
+            }
+            default: {
                 System.err.println("Opcion invalida >:(");
             }
-                
+
         }
-    
+
     }
-    
-    public void menuModificarUnaSerie(){
-    
+
+    /**
+     *
+     */
+    public void menuModificarUnaSerie() {
+
         //LLamar funcion mostrar menu modificar una pelicula
         System.out.println("Titulo de la serie a modificar?");
         Serie serieModificar = ac.seachSerieByTitle(consola.nextLine());
-        
-        if(serieModificar!=null){
-            
+
+        if (serieModificar != null) {
+
             menu.modificarSerie();
             String opcion = consola.nextLine();
 
             switch (opcion) {
-                case "1":{
+                case "1": {
                     //Cambiar atributos de la serie
                     menuCambiarAtributosSerie(serieModificar);
                     break;
-                }   
-                case "2":{
+                }
+                case "2": {
                     //Modificar una temporada
                     menuModificarTemporada(serieModificar);
                     break;
-                } 
-                case "3":{
+                }
+                case "3": {
                     //Nueva temporada
                     ac.newTemporada(serieModificar);
                     break;
-                } 
-                case "4":{
+                }
+                case "4": {
                     //Borrar temporada
                     ac.deleteTemporada(serieModificar);
                     break;
-                } 
-                case "5":{
+                }
+                case "5": {
                     //Listar temporadas
                     ac.listTemporadas(serieModificar);
                     break;
-                } 
-                case "6":{
+                }
+                case "6": {
                     //Salir
                     break;
-                } 
-                default:{
+                }
+                default: {
                     System.err.println("Opcion invalida >:(");
                 }
 
             }
-        }else{
+        } else {
             System.err.println("SERIE NO ENCONTRADA");
         }
-    
+
     }
-    
-    public void menuModificarTemporada(Serie s){
-    
+
+    /**
+     *
+     * @param s
+     */
+    public void menuModificarTemporada(Serie s) {
+
         //LLamar funcion mostrar menu modificar temporadas
         System.out.println("Escribe el numero de temporada a buscar");
         String numeroTemporada = new Scanner(System.in).nextLine();
-        
+
         Temporada temp = ac.findTemporadaByNumber(s, numeroTemporada);
-        
-        if(temp!=null){
-        
+
+        if (temp != null) {
+
             menu.modificarTemporada();
             String opcion = consola.nextLine();
 
             switch (opcion) {
-                case "1":{
+                case "1": {
                     //Cambiar atributos de la temporada
                     menuCambiarAtributosTemporada(temp);
                     break;
-                }   
-                case "2":{
+                }
+                case "2": {
                     //Modificar capitulo de la temporada
-                    menuModificarAtributosCapitulos(temp); 
+                    menuModificarAtributosCapitulos(temp);
                     break;
-                } 
-                case "3":{
+                }
+                case "3": {
                     //Nuevo capitulo
-                    ac.newCapitulo(temp); 
+                    ac.newCapitulo(temp);
                     break;
-                } 
-                case "4":{
+                }
+                case "4": {
                     //Borrar capitulo
                     ac.deleteCapitulo(temp);
                     break;
-                } 
-                case "5":{
+                }
+                case "5": {
                     //Listar capitulos
                     ac.listCapitulos(temp);
                     break;
-                } 
-                case "6":{
+                }
+                case "6": {
                     //Salir
                     break;
-                } 
-                default:{
+                }
+                default: {
                     System.err.println("Opcion invalida >:(");
                 }
 
             }
-        
-        }else{
+
+        } else {
             System.err.println("TEMPORADA NO ENCONTRADA");
         }
-    
+
     }
-    
-    public void menuModificarAtributosCapitulos(Temporada temp){ 
+
+    /**
+     *
+     * @param temp
+     */
+    public void menuModificarAtributosCapitulos(Temporada temp) {
         //LLamar funcion mostrar menu modificar atributos del capitulo
         menu.modificarUnCapitulo();
         String opcion = consola.nextLine();
-        
+
         ac.modificarCapituloAtribute(temp, opcion);
-        
+
     }
-    
-    public void menuCambiarAtributosTemporada(Temporada temp){
-    
+
+    /**
+     *
+     * @param temp
+     */
+    public void menuCambiarAtributosTemporada(Temporada temp) {
+
         //LLamar funcion mostrar menu cambiar atributos temporada
         menu.modificarUnaTemporada();
         String opcion = consola.nextLine();
-        
-        ac.modificarTemporadaAtribute(temp,opcion);
-        
+
+        ac.modificarTemporadaAtribute(temp, opcion);
+
     }
-    
-    public void menuCambiarAtributosSerie(Serie s){
-        
+
+    /**
+     *
+     * @param s
+     */
+    public void menuCambiarAtributosSerie(Serie s) {
+
         //LLamar funcion mostrar menu cambiar atributos serie
         menu.modificarUnaSerie();
         String opcion = consola.nextLine();
-        
+
         //Mandar la opcion seleccionada al selector en serie controller
         ac.modifySerieAtribute(s, opcion);
-        
-        
+
     }
-    
-    public void menuModificarPeliculas(){
-    
+
+    /**
+     *
+     */
+    public void menuModificarPeliculas() {
+
         //LLamar funcion mostrar menu modificar peliculas
         menu.modificarPeliculas();
         String opcion = consola.nextLine();
-        
+
         switch (opcion) {
-            case "1":{
+            case "1": {
                 //Nueva pelicula
                 ac.newPelicula();
                 break;
-            }   
-            case "2":{
+            }
+            case "2": {
                 //Modificar pelicula
                 menuModificaUnaPelicula();
                 break;
-            } 
-            case "3":{
+            }
+            case "3": {
                 //Borrar pelicula
                 ac.deletePelicula();
                 break;
-            } 
-            case "4":{
+            }
+            case "4": {
                 //Salir
                 break;
-            } 
-            default:{
+            }
+            default: {
                 System.err.println("Opcion invalida >:(");
             }
-                
+
         }
-    
+
     }
-    
-    public void menuModificaUnaPelicula(){//TODO
-    
+
+    /**
+     *
+     */
+    public void menuModificaUnaPelicula() {//TODO
+
         //LLamar funcion mostrar menu modificar una pelicula
         menu.modificarUnaPelicula();
         String opcion = consola.nextLine();
-        Pelicula p= ac.getPeliculaPorTitulo();
-        
+        Pelicula p = ac.getPeliculaPorTitulo();
+
         ac.modificarPelicula(p, opcion);
-    
+
     }
-    
-    public void menuListado(){
-    
+
+    /**
+     *
+     */
+    public void menuListado() {
+
         //LLamar funcion mostrar menu listado
         menu.listados();
         String opcion = consola.nextLine();
-        
+
         switch (opcion) {
-            case "1":{
+            case "1": {
                 //Mostrar todo
                 ac.listAll();
                 break;
-            }   
-            case "2":{
+            }
+            case "2": {
                 //Mostrar todas la series
                 ac.listSeries();
                 break;
-            } 
-            case "3":{
+            }
+            case "3": {
                 //Mostrar todas las peliculas y series
                 ac.listPeliculas();
                 break;
-            } 
-            case "4":{
+            }
+            case "4": {
                 //Salir
                 break;
-            } 
-            default:{
+            }
+            default: {
                 System.err.println("Opcion invalida >:(");
             }
-                
+
         }
-    
+
     }
 }

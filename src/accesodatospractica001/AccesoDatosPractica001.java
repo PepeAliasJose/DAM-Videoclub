@@ -17,8 +17,8 @@ public class AccesoDatosPractica001 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+
         new MainController();
     }
-    
+
 }

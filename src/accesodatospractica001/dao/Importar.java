@@ -13,16 +13,17 @@ import java.io.IOException;
 /**
  *
  * @author Federico
- * 
- * 
+ *
+ *
  */
 public class Importar {
 
-    public Importar(){}
-    
-    public Videoclub leerXML()throws IOException {
-            XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("data/videoclub.xml")));
-            Videoclub vc = (Videoclub) d.readObject();
-            return vc;
+    public Importar() {
+    }
+
+    public Videoclub leerXML() throws IOException {
+        XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("data/videoclub.xml")));
+        Videoclub vc = (Videoclub) d.readObject();
+        return vc;
     }
 }

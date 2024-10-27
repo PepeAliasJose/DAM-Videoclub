@@ -11,15 +11,16 @@ import java.util.ArrayList;
  *
  * @author pepe
  */
-public class Serie implements Serializable{
-    
+public class Serie implements Serializable {
+
     String title;
     String sinopsis;
     String director;
     boolean emision;
     ArrayList<Temporada> temporadas;
-    
-    public Serie(){}
+
+    public Serie() {
+    }
 
     public Serie(String title, String sinopsis, String director, boolean emision, ArrayList<Temporada> temporadas) {
         setTitle(title);
@@ -71,15 +72,13 @@ public class Serie implements Serializable{
 
     @Override
     public String toString() {
-   
-    String res = String.format("%-20s %-15s %10s%n%47s%n%36s temporadas",
-            title,director,emision?"En emision":"Terminada",
-            sinopsis,temporadas.size()
-            );
-    
-    return res;
+
+        String res = String.format("%-20s %-15s %10s%n%47s%n%36s temporadas",
+                title, director, emision ? "En emision" : "Terminada",
+                sinopsis, temporadas.size()
+        );
+
+        return res;
     }
-    
-    
-    
+
 }

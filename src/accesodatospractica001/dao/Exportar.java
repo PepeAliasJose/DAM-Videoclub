@@ -13,12 +13,13 @@ import java.io.IOException;
 /**
  *
  * @author Federico
- * 
- * 
+ *
+ *
  */
 public class Exportar {
-    
-    public Exportar(){}
+
+    public Exportar() {
+    }
 
     public void escribirXML(Videoclub vc) {
         try {

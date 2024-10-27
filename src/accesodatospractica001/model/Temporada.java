@@ -12,15 +12,16 @@ import java.util.ArrayList;
  *
  * @author pepe
  */
-public class Temporada implements Serializable{
-    
+public class Temporada implements Serializable {
+
     String seasonNumber;
     String title;
     String sinopsis;
     String year;
     ArrayList<Capitulo> capitulos;
-    
-    public Temporada(){}
+
+    public Temporada() {
+    }
 
     public Temporada(String seasonNumber, String title, String sinopsis, String year, ArrayList<Capitulo> capitulos) throws TemporadaException {
         setSeasonNumber(seasonNumber);
@@ -36,14 +37,14 @@ public class Temporada implements Serializable{
 
     public void setSeasonNumber(String seasonNumber) throws TemporadaException {
         try {
-            if(Integer.parseInt(seasonNumber)<0){
+            if (Integer.parseInt(seasonNumber) < 0) {
                 throw new TemporadaException("Numero de temporada");
             }
             this.seasonNumber = seasonNumber;
         } catch (NumberFormatException e) {
             throw new TemporadaException("Numero de temporada");
         }
-        
+
     }
 
     public String getTitle() {
@@ -68,7 +69,7 @@ public class Temporada implements Serializable{
 
     public void setYear(String year) throws TemporadaException {
         try {
-            if(Integer.parseInt(year)<0){
+            if (Integer.parseInt(year) < 0) {
                 throw new TemporadaException("Año");
             }
             this.year = year;
@@ -87,15 +88,12 @@ public class Temporada implements Serializable{
 
     @Override
     public String toString() {
-        
+
         String res = String.format("%-20s Temporada: %-3s %10s capitulos%n%-56s",
-            title,seasonNumber,capitulos.size(),sinopsis);
-        
+                title, seasonNumber, capitulos.size(), sinopsis);
+
         return res;
-        
-    
+
     }
-    
-    
-    
+
 }
