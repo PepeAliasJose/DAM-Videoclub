@@ -97,7 +97,7 @@
            <void method="add">
             <object class="accesodatospractica001.model.Capitulo">
              <void property="duration">
-              <string>80</string>
+              <string>90</string>
              </void>
              <void property="sinopsis">
               <string>vuelve a empezar</string>
@@ -208,7 +208,7 @@
           <string>Walter wite se descoña y vuelve</string>
          </void>
          <void property="title">
-          <string>EL descoñado</string>
+          <string>Descoñamiento, Jessi</string>
          </void>
          <void property="year">
           <string>2024</string>

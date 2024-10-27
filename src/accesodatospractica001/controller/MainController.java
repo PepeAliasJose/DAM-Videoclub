@@ -8,8 +8,8 @@ import accesodatospractica001.view.Menu;
 import accesodatospractica001.model.*;
 import java.io.IOException;
 import java.util.Scanner;
-import accesodatospractica001.model.*;
 import accesodatospractica001.controller.*;
+
 /**
  *
  * @author pepe
@@ -238,22 +238,22 @@ public class MainController {
             switch (opcion) {
                 case "1":{
                     //Cambiar atributos de la temporada
-                    menuCambiarAtributosTemporada();//TODO
+                    menuCambiarAtributosTemporada(temp);
                     break;
                 }   
                 case "2":{
                     //Modificar capitulo de la temporada
-                    menuModificarAtributosCapitulos();
+                    menuModificarAtributosCapitulos(temp); 
                     break;
                 } 
                 case "3":{
                     //Nuevo capitulo
-                    //ac.newCapitulo(temp); //TODO
+                    ac.newCapitulo(temp); 
                     break;
                 } 
                 case "4":{
                     //Borrar capitulo
-                    //ac.deleteCapitulo(temp); //TODO
+                    ac.deleteCapitulo(temp);
                     break;
                 } 
                 case "5":{
@@ -277,69 +277,22 @@ public class MainController {
     
     }
     
-    public void menuModificarAtributosCapitulos(){
-    
+    public void menuModificarAtributosCapitulos(Temporada temp){ 
         //LLamar funcion mostrar menu modificar atributos del capitulo
         menu.modificarUnCapitulo();
         String opcion = consola.nextLine();
         
-        switch (opcion) {
-            case "1":{
-                //Cambiar titulo
-                break;
-            }   
-            case "2":{
-                //Cambiar sinopsis
-                break;
-            } 
-            case "3":{
-                //Cambiar duracion
-                break;
-            } 
-            case "4":{
-                //Salir
-                break;
-            } 
-            default:{
-                System.err.println("Opcion invalida >:(");
-            }
-                
-        }
-    
+        ac.modificarCapituloAtribute(temp, opcion);
+        
     }
     
-    public void menuCambiarAtributosTemporada(){
+    public void menuCambiarAtributosTemporada(Temporada temp){
     
         //LLamar funcion mostrar menu cambiar atributos temporada
         menu.modificarUnaTemporada();
         String opcion = consola.nextLine();
         
-        switch (opcion) {
-            case "1":{
-                //Cambiar numero
-                break;
-            }   
-            case "2":{
-                //Cambiar titulo
-                break;
-            } 
-            case "3":{
-                //Cambiar sinopsis
-                break;
-            } 
-            case "4":{
-                //Cambiar año
-                break;
-            } 
-            case "5":{
-                //Salir
-                break;
-            } 
-            default:{
-                System.err.println("Opcion invalida >:(");
-            }
-                
-        }
+        ac.modificarTemporadaAtribute(temp,opcion);
         
     }
     
@@ -350,18 +303,9 @@ public class MainController {
         String opcion = consola.nextLine();
         
         //Mandar la opcion seleccionada al selector en serie controller
-        try {
-            int numeroOpcion = Integer.parseInt(opcion);
+        ac.modifySerieAtribute(s, opcion);
         
-            if(numeroOpcion>0 && numeroOpcion<5){
-                ac.modifySerieAtribute(s, opcion);
-            }else if(numeroOpcion == 5){}
-            else{
-                System.err.println("Opcion invalida >:(");
-            }
-        } catch (NumberFormatException e) {
-            System.err.println("Opcion muy mala >:(");
-        }
+        
     }
     
     public void menuModificarPeliculas(){
@@ -398,7 +342,7 @@ public class MainController {
     
     }
     
-    public void menuModificaUnaPelicula(){
+    public void menuModificaUnaPelicula(){//TODO
     
         //LLamar funcion mostrar menu modificar una pelicula
         menu.modificarUnaPelicula();

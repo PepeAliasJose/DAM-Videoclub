@@ -201,4 +201,112 @@ public class SerieController {
     
         return s;
     }
+    
+    
+    /**
+    * 
+    * 
+    * throws TemporadaException si algun dato esta mal
+    * 
+    * @param t temporada a modificar
+    * @param option opcion a cambiar de la temporada
+    * 
+    * @return una version modificada de la temporada introducida
+    * 
+    * @since 1.0
+    * 
+    * 
+    */
+    public Temporada modificateTemporada(Temporada t, String option){
+    
+        switch (option) {
+            case "1":{
+                //Cambiar numero
+                System.out.println("Nuevo numero de temporada");
+                t.setSeasonNumber(new Scanner(System.in).nextLine());
+                break;
+            }   
+            case "2":{
+                //Cambiar titulo
+                System.out.println("Nuevo titulo");
+                t.setTitle(new Scanner(System.in).nextLine());
+                break;
+            } 
+            case "3":{
+                //Cambiar sinopsis
+                System.out.println("Nueva sinopsis");
+                t.setSinopsis(new Scanner(System.in).nextLine());
+                break;
+            } 
+            case "4":{
+                //Cambiar año
+                System.out.println("Nuevo año de emision");
+                t.setYear(new Scanner(System.in).nextLine());
+                break;
+            } 
+            case "5":{
+                //Salir
+                break;
+            } 
+            default:{
+                System.err.println("Opcion invalida >:(");
+            }
+                
+        }
+        
+        return t;
+    
+    }
+    
+    /**
+    * 
+    * 
+    * throws CapituloException si algun dato esta mal
+    * 
+    * @param c capitulo a modificar
+    * @param option opcion a cambiar del capitulo
+    * 
+    * @return una version modificada del capitulo introducido
+    * 
+    * 
+    * @since 1.0
+    * 
+    * 
+    */
+    public Capitulo modificateCapitulo(Capitulo c, String option){
+    
+        
+        
+         switch (option) {
+            case "1":{
+                //Cambiar titulo
+                System.out.println("Nuevo nombre de capitulo");
+                c.setTitle(new Scanner(System.in).nextLine());
+                break;
+            }   
+            case "2":{
+                //Cambiar sinopsis
+                System.out.println("Nueva sinopsis");
+                c.setSinopsis(new Scanner(System.in).nextLine());
+                break;
+            } 
+            case "3":{
+                //Cambiar duracion
+                System.out.println("Nueva duracion");
+                c.setDuration(new Scanner(System.in).nextLine());
+                break;
+            } 
+            case "4":{
+                //Salir
+                break;
+            } 
+            default:{
+                System.err.println("Opcion invalida >:(");
+            }
+                
+        }
+        
+         return c;
+        
+    }
 }

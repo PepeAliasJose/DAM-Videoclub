@@ -361,4 +361,106 @@ public class ApplicationController {
         }
     
     }
+    
+    /**
+    * 
+    * Agrega un capitulo a una temporada
+    * 
+    * @param t la temporada a la que agregar un capitulo
+    *
+    */
+    public void newCapitulo(Temporada t){
+    
+        ArrayList<Capitulo> listaCapitulos = t.getCapitulos();
+        
+        Capitulo c = sc.createCapitulo();
+        listaCapitulos.add(c);
+        t.setCapitulos(listaCapitulos);
+        
+        new Exportar().escribirXML(videoclub);
+    
+    }
+    
+    /**
+    * 
+    * Borra un capitulo de una temporada
+    * 
+    * @param t la temporada a la que borrar un capitulo
+    *
+    */
+    public void deleteCapitulo(Temporada t){
+    
+        ArrayList<Capitulo> listaCapitulos = t.getCapitulos();
+        
+        System.out.println("Escriba el numero de capitulo a borrar:");
+        
+        int cont = 1;
+        for(Capitulo c: listaCapitulos){
+        
+            System.out.printf("Capitulo %s - %s%n",cont,c.getTitle());
+            cont++;
+        }
+        
+        String borrar = new Scanner(System.in).nextLine();
+        
+        try {
+            
+            listaCapitulos.remove(Integer.parseInt(borrar)-1);
+        
+            t.setCapitulos(listaCapitulos);
+
+            new Exportar().escribirXML(videoclub);
+    
+        } catch (Exception e) {
+            
+            //Lanzar excepcion
+            System.err.println("NO EXISTE ESE NUMERO DE CAPITULO");
+        }
+        
+
+    }
+    
+    /**
+    * 
+    * Modifica los atributos de un capitulo de una temporada
+    * 
+    * @param temp temporada a la que modificar el capitulo
+    * @param opcion seleccion de que opcion vas a cambiar
+    *
+    */
+    public void modificarCapituloAtribute(Temporada temp, String opcion){
+    
+        ArrayList<Capitulo> listaCapitulos = temp.getCapitulos();
+        System.out.println("Escriba el numero de capitulo a modificar:");
+
+        int cont = 1;
+        for(Capitulo c: listaCapitulos){
+            System.out.printf("Capitulo %s - %s%n",cont,c.getTitle());
+            cont++;
+        }
+
+        String modificar = new Scanner(System.in).nextLine();
+        
+        try {
+            
+            Capitulo c = listaCapitulos.get(Integer.parseInt(modificar)-1);
+            c = sc.modificateCapitulo(c, opcion);
+            
+            new Exportar().escribirXML(videoclub);
+            
+        } catch (Exception e) {
+            System.err.println("NO EXISTE ESE NUMERO DE CAPITULO");
+        }
+        
+        
+    
+    }
+    
+    public void modificarTemporadaAtribute(Temporada temp, String opcion){
+    
+        sc.modificateTemporada(temp, opcion);
+    
+        new Exportar().escribirXML(videoclub);
+        
+    }
 }
