@@ -119,7 +119,6 @@ public class MainController {
 
     }
 
-    //TODO
 
     /**
      *
@@ -132,14 +131,27 @@ public class MainController {
 
         switch (opcion) {
             case "1": {
-                //Busqueda por titulo
+                //Busqueda pelicula por titulo
+                ac.listPeliculaByTitlePiece();
                 break;
             }
             case "2": {
-                //Busqueda por año
+                //Busqueda pelicula por año
+                ac.listPeliculaByYear();
                 break;
             }
             case "3": {
+                //Busqueda serie por titulo
+                ac.listSerieByTitlePiece();
+                break;
+            }
+            case "4": {
+                //Busqueda serie por año
+                ac.listSerieByYear();
+                break;
+            }
+            
+            case "5": {
                 //Salir
                 break;
             }
@@ -195,7 +207,7 @@ public class MainController {
 
         //LLamar funcion mostrar menu modificar una pelicula
         System.out.println("Titulo de la serie a modificar?");
-        Serie serieModificar = ac.seachSerieByTitle(consola.nextLine());
+        Serie serieModificar = ac.searchSerieByTitle(consola.nextLine());
 
         if (serieModificar != null) {
 
@@ -384,7 +396,7 @@ public class MainController {
     /**
      *
      */
-    public void menuModificaUnaPelicula() {//TODO
+    public void menuModificaUnaPelicula() {
 
         //LLamar funcion mostrar menu modificar una pelicula
         menu.modificarUnaPelicula();

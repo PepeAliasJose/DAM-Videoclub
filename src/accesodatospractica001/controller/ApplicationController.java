@@ -77,7 +77,165 @@ public class ApplicationController {
         listPeliculas();
         listSeries();
     }
+    
+    /**
+     *
+     * Filtra las series del videoclub por su titulo
+     * 
+     * @param title fragmeto de titulo para filtrar
+     * 
+     * @return ArrayList<Serie> de las series cuyo titulo tenga parte del buscado
+     *
+     */
+    public ArrayList<Serie> getSerieByTitlePiece(String title){
+    
+        ArrayList<Serie> listaFiltrada = new ArrayList<Serie>();
+        for(Serie s: videoclub.getSeries()){
+            
+            if(s.getTitle().contains(title)){
+                listaFiltrada.add(s);
+            }
+            
+        }
+        
+        return listaFiltrada;
+    
+    }
 
+    /**
+     *
+     * Filtra las series del videoclub por su año
+     * 
+     * @param year año por el que buscar series
+     * 
+     * @return ArrayList<Serie> de las series que tengan una temporada de ese año
+     *
+     */
+    public ArrayList<Serie> getSerieByYear(String year){
+    
+       ArrayList<Serie> listaFiltrada = new ArrayList<Serie>();
+        for(Serie s: videoclub.getSeries()){  
+           for(Temporada t:s.getTemporadas()){
+               if(t.getYear().equals(year)){
+                   listaFiltrada.add(s);
+               }
+           }  
+        }
+        
+        return listaFiltrada;
+    
+    }
+    
+    /**
+     *
+     * Lista las series del videoclub por su titulo
+     * 
+     */
+    public void listSerieByTitlePiece(){
+        System.out.println("Escribe el titulo:");
+        ArrayList<Serie> lista = getSerieByTitlePiece(sca.nextLine());
+        for(Serie s : lista){
+            System.out.println(s);
+            System.out.println("");
+        }
+        
+    }
+    
+    /**
+     *
+     * Lista las series del videoclub por su año
+     * 
+     */
+    public void listSerieByYear(){
+        System.out.println("Escribe el año:");
+        ArrayList<Serie> lista = getSerieByYear(sca.nextLine());
+        for(Serie s : lista){
+            System.out.println(s);
+            System.out.println("");
+        }
+        
+    }
+    
+    /**
+     *
+     * Filtra las peliculas del videoclub por su titulo
+     * 
+     * @param title fragmeto de titulo para filtrar
+     * 
+     * @return ArrayList<Pelicula> de las peliculas cuyo titulo tenga parte del buscado
+     *
+     */
+    public ArrayList<Pelicula> getPeliculaByTitlePiece(String title){
+    
+        ArrayList<Pelicula> listaFiltrada = new ArrayList<Pelicula>();
+        for(Pelicula p: videoclub.getPeliculas()){
+            
+            if(p.getTitle().contains(title)){
+                listaFiltrada.add(p);
+            }
+            
+        }
+        
+        return listaFiltrada;
+    
+    }
+
+    /**
+     *
+     * Filtra las peliculas del videoclub por su año
+     * 
+     * @param year año por el que buscar peliculas
+     * 
+     * @return ArrayList<Pelicula> de las peliculas que sean del año buscado
+     *
+     */
+    public ArrayList<Pelicula> getPeliculaByYear(String year){
+    
+        ArrayList<Pelicula> listaFiltrada = new ArrayList<Pelicula>();
+        for(Pelicula p: videoclub.getPeliculas()){
+            
+            if(p.getYear().equals(year)){
+                listaFiltrada.add(p);
+            }
+            
+        }
+        
+        return listaFiltrada;
+    
+    }
+    
+    
+    /**
+     *
+     * Lista las peliculas del videoclub por su titulo
+     * 
+     */
+    public void listPeliculaByTitlePiece(){
+        System.out.println("Escribe el titulo:");
+        ArrayList<Pelicula> lista = getPeliculaByTitlePiece(sca.nextLine());
+        for(Pelicula p : lista){
+            System.out.println(p);
+            System.out.println("");
+        }
+        
+    }
+    
+    /**
+     *
+     * Lista las peliculas del videoclub por su año
+     * 
+     */
+    public void listPeliculaByYear(){
+        System.out.println("Escribe el año:");
+        ArrayList<Pelicula> lista = getPeliculaByYear(sca.nextLine());
+        for(Pelicula p : lista){
+            System.out.println(p);
+            System.out.println("");
+        }
+        
+    }
+    
+    
     /**
      *
      * Pide al controllador de peliculas que cree una pelicula y la mete en el
@@ -203,11 +361,11 @@ public class ApplicationController {
     public void deleteSerie() {
         //Aqui se recogen las excepciones
         System.out.println("Escribe el titulo de la serie a borrar");
-        Serie s = seachSerieByTitle(new java.util.Scanner(System.in).nextLine());
+        Serie s = searchSerieByTitle(sca.nextLine());
 
         if (s != null) {
             System.out.printf("Seguro que quieres borrar %s?(s/n)%n", s.getTitle());
-            if (new java.util.Scanner(System.in).nextLine().equalsIgnoreCase("S")) {
+            if (sca.nextLine().equalsIgnoreCase("S")) {
 
                 //Agregar la serie a la lista de series
                 ArrayList<Serie> series = videoclub.getSeries();
@@ -236,7 +394,7 @@ public class ApplicationController {
      *
      *
      */
-    public Serie seachSerieByTitle(String title) {
+    public Serie searchSerieByTitle(String title) {
 
         for (Serie s : videoclub.getSeries()) {
 
@@ -340,7 +498,7 @@ public class ApplicationController {
     public void deleteTemporada(Serie s) {
 
         System.out.println("Escribe el numero de temporada a borrar");
-        String numero = new Scanner(System.in).nextLine();
+        String numero = sca.nextLine();
 
         ArrayList<Temporada> listaTemporada = s.getTemporadas();
 
@@ -451,7 +609,7 @@ public class ApplicationController {
             cont++;
         }
 
-        String borrar = new Scanner(System.in).nextLine();
+        String borrar = sca.nextLine();
 
         try {
 
@@ -488,7 +646,7 @@ public class ApplicationController {
             cont++;
         }
 
-        String modificar = new Scanner(System.in).nextLine();
+        String modificar = sca.nextLine();
 
         try {
 

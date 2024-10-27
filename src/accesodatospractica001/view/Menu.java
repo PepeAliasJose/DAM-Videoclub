@@ -107,9 +107,11 @@ public class Menu {
 
     public void busqueda() {
         System.out.println("MENU BUSQUEDA");
-        System.out.println("1 - Buscar Título");
-        System.out.println("2 - Buscar Año");
-        System.out.println("3 - Salir");
+        System.out.println("1 - Buscar pelicula por Título");
+        System.out.println("2 - Buscar pelicula por Año");
+        System.out.println("3 - Buscar serie por Título");
+        System.out.println("4 - Buscar serie por Año");
+        System.out.println("5 - Salir");
     }
 
     public void importarExportar() {
