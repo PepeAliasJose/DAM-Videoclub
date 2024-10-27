@@ -18,6 +18,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -82,165 +84,166 @@ public class ApplicationController {
         listPeliculas();
         listSeries();
     }
-    
+
     /**
      *
      * Filtra las series del videoclub por su titulo
-     * 
+     *
      * @param title fragmeto de titulo para filtrar
-     * 
-     * @return ArrayList<Serie> de las series cuyo titulo tenga parte del buscado
+     *
+     * @return ArrayList -Serie- de las series cuyo titulo tenga parte del
+     * buscado
      *
      */
-    public ArrayList<Serie> getSerieByTitlePiece(String title){
-    
+    public ArrayList<Serie> getSerieByTitlePiece(String title) {
+
         ArrayList<Serie> listaFiltrada = new ArrayList<Serie>();
-        for(Serie s: videoclub.getSeries()){
-            
-            if(s.getTitle().contains(title)){
+        for (Serie s : videoclub.getSeries()) {
+
+            if (s.getTitle().contains(title)) {
                 listaFiltrada.add(s);
             }
-            
+
         }
-        
+
         return listaFiltrada;
-    
+
     }
 
     /**
      *
      * Filtra las series del videoclub por su año
-     * 
+     *
      * @param year año por el que buscar series
-     * 
-     * @return ArrayList<Serie> de las series que tengan una temporada de ese año
+     *
+     * @return ArrayList -Serie- de las series que tengan una temporada de ese
+     * año
      *
      */
-    public ArrayList<Serie> getSerieByYear(String year){
-    
-       ArrayList<Serie> listaFiltrada = new ArrayList<Serie>();
-        for(Serie s: videoclub.getSeries()){  
-           for(Temporada t:s.getTemporadas()){
-               if(t.getYear().equals(year)){
-                   listaFiltrada.add(s);
-               }
-           }  
+    public ArrayList<Serie> getSerieByYear(String year) {
+
+        ArrayList<Serie> listaFiltrada = new ArrayList<Serie>();
+        for (Serie s : videoclub.getSeries()) {
+            for (Temporada t : s.getTemporadas()) {
+                if (t.getYear().equals(year)) {
+                    listaFiltrada.add(s);
+                }
+            }
         }
-        
+
         return listaFiltrada;
-    
+
     }
-    
+
     /**
      *
      * Lista las series del videoclub por su titulo
-     * 
+     *
      */
-    public void listSerieByTitlePiece(){
+    public void listSerieByTitlePiece() {
         System.out.println("Escribe el titulo:");
         ArrayList<Serie> lista = getSerieByTitlePiece(sca.nextLine());
-        for(Serie s : lista){
+        for (Serie s : lista) {
             System.out.println(s);
             System.out.println("");
         }
-        
+
     }
-    
+
     /**
      *
      * Lista las series del videoclub por su año
-     * 
+     *
      */
-    public void listSerieByYear(){
+    public void listSerieByYear() {
         System.out.println("Escribe el año:");
         ArrayList<Serie> lista = getSerieByYear(sca.nextLine());
-        for(Serie s : lista){
+        for (Serie s : lista) {
             System.out.println(s);
             System.out.println("");
         }
-        
+
     }
-    
+
     /**
      *
      * Filtra las peliculas del videoclub por su titulo
-     * 
+     *
      * @param title fragmeto de titulo para filtrar
-     * 
-     * @return ArrayList<Pelicula> de las peliculas cuyo titulo tenga parte del buscado
+     *
+     * @return ArrayList -Pelicula- de las peliculas cuyo titulo tenga parte del
+     * buscado
      *
      */
-    public ArrayList<Pelicula> getPeliculaByTitlePiece(String title){
-    
+    public ArrayList<Pelicula> getPeliculaByTitlePiece(String title) {
+
         ArrayList<Pelicula> listaFiltrada = new ArrayList<Pelicula>();
-        for(Pelicula p: videoclub.getPeliculas()){
-            
-            if(p.getTitle().contains(title)){
+        for (Pelicula p : videoclub.getPeliculas()) {
+
+            if (p.getTitle().contains(title)) {
                 listaFiltrada.add(p);
             }
-            
+
         }
-        
+
         return listaFiltrada;
-    
+
     }
 
     /**
      *
      * Filtra las peliculas del videoclub por su año
-     * 
+     *
      * @param year año por el que buscar peliculas
-     * 
-     * @return ArrayList<Pelicula> de las peliculas que sean del año buscado
+     *
+     * @return ArrayList -Pelicula- de las peliculas que sean del año buscado
      *
      */
-    public ArrayList<Pelicula> getPeliculaByYear(String year){
-    
+    public ArrayList<Pelicula> getPeliculaByYear(String year) {
+
         ArrayList<Pelicula> listaFiltrada = new ArrayList<Pelicula>();
-        for(Pelicula p: videoclub.getPeliculas()){
-            
-            if(p.getYear().equals(year)){
+        for (Pelicula p : videoclub.getPeliculas()) {
+
+            if (p.getYear().equals(year)) {
                 listaFiltrada.add(p);
             }
-            
+
         }
-        
+
         return listaFiltrada;
-    
+
     }
-    
-    
+
     /**
      *
      * Lista las peliculas del videoclub por su titulo
-     * 
+     *
      */
-    public void listPeliculaByTitlePiece(){
+    public void listPeliculaByTitlePiece() {
         System.out.println("Escribe el titulo:");
         ArrayList<Pelicula> lista = getPeliculaByTitlePiece(sca.nextLine());
-        for(Pelicula p : lista){
+        for (Pelicula p : lista) {
             System.out.println(p);
             System.out.println("");
         }
-        
+
     }
-    
+
     /**
      *
      * Lista las peliculas del videoclub por su año
-     * 
+     *
      */
-    public void listPeliculaByYear(){
+    public void listPeliculaByYear() {
         System.out.println("Escribe el año:");
         ArrayList<Pelicula> lista = getPeliculaByYear(sca.nextLine());
-        for(Pelicula p : lista){
+        for (Pelicula p : lista) {
             System.out.println(p);
             System.out.println("");
         }
-        
+
     }
-    
-    
+
     /**
      *
      * Pide al controllador de peliculas que cree una pelicula y la mete en el
@@ -685,40 +688,60 @@ public class ApplicationController {
         }
 
     }
-    public void exportarPeliculasCSV(){
+
+    /**
+     *
+     *
+     * Saca las peliculas a un archivo CSV en la carpeta csvIO
+     *
+     *
+     */
+    public void exportarPeliculasCSV() {
         ArrayList<Pelicula> listaPeliculas = videoclub.getPeliculas();
-        
-        File f= new File("csvIO/peliculas.csv");
-        try{
-        BufferedWriter bw= new BufferedWriter(new FileWriter(f));
-        for(int i=0;i<listaPeliculas.size();i++){
-            
-            bw.write(listaPeliculas.get(i).getTitle()+","+listaPeliculas.get(i).getYear()+","+listaPeliculas.get(i).getSynopsis()+","+listaPeliculas.get(i).getDuration()+","+
-                    listaPeliculas.get(i).getDirector());
-            bw.newLine();
-        }
-        bw.flush();
-        bw.close();
-        }catch(IOException e){
+
+        File f = new File("csvIO/peliculas.csv");
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+            for (int i = 0; i < listaPeliculas.size(); i++) {
+
+                bw.write(listaPeliculas.get(i).getTitle() + "," + listaPeliculas.get(i).getYear() + "," + listaPeliculas.get(i).getSynopsis() + "," + listaPeliculas.get(i).getDuration() + ","
+                        + listaPeliculas.get(i).getDirector());
+                bw.newLine();
+            }
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
-    public void importarPeliculasCSV(){
+
+    /**
+     *
+     *
+     * Mete las peliculas de un CSV al videoclub, el CSV esta en carpeta csvIO
+     *
+     *
+     */
+    public void importarPeliculasCSV() {
         ArrayList<Pelicula> listaPeliculas = new ArrayList<>();
-        
-        File f= new File("csvIO/peliculas.csv");
-        try{
-        BufferedReader br= new BufferedReader(new FileReader(f));
-        String linea="";
-        while((linea=br.readLine())!=null){
-            String[]cachos=linea.split(",");
-            listaPeliculas.add(new Pelicula(cachos[0],cachos[1],cachos[2],cachos[3],cachos[4]));
-        }
-        videoclub.setPeliculas(listaPeliculas);
-        //Actualizar xml
-        new Exportar().escribirXML(videoclub);
-        }catch(IOException e){
-            System.err.println(e.getMessage());
+
+        File f = new File("csvIO/peliculas.csv");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            String linea = "";
+            while ((linea = br.readLine()) != null) {
+                String[] cachos = linea.split(",");
+                listaPeliculas.add(new Pelicula(cachos[0], cachos[1], cachos[2], cachos[3], cachos[4]));
+            }
+            videoclub.setPeliculas(listaPeliculas);
+            //Actualizar xml
+            new Exportar().escribirXML(videoclub);
+        } catch (IOException e) {
+            System.err.println("ERROR LEYENDO EL ARCHIVO CSV");
+        } catch (PeliculaException ex) {
+            System.err.println(ex.getMessage());
+        } catch (IndexOutOfBoundsException ex) {
+            System.err.println("EL FORMATO DEL CSV NO ES CORRECTO");
         }
     }
 }
