@@ -89,8 +89,8 @@ public class Temporada implements Serializable {
     @Override
     public String toString() {
 
-        String res = String.format("%-20s Temporada: %-3s %10s capitulos%n%-56s",
-                title, seasonNumber, capitulos.size(), sinopsis);
+        String res = String.format("%-20s Temporada: %-3s %s %n%-40s %10s capitulos",
+                title, seasonNumber,year, capitulos.size(), sinopsis);
 
         return res;
 

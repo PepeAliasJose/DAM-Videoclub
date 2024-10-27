@@ -72,11 +72,11 @@ public class Pelicula implements Serializable {
     public void setDuration(String duration) throws PeliculaException {
         try {
             if (Integer.parseInt(duration) < 0) {
-                throw new PeliculaException("Año");
+                throw new PeliculaException("Duracion");
             }
             this.duration = duration;
         } catch (NumberFormatException e) {
-            throw new PeliculaException("Año");
+            throw new PeliculaException("Duracion");
         }
 
     }
